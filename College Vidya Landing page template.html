@@ -1,0 +1,1549 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NorthStep Footwear | Every Step, Your Style.</title>
+<meta name="description" content="NorthStep Footwear – affordable, stylish, comfortable trainers, running shoes, slip-ons and boots for men and women. UK delivery.">
+<link rel="canonical" id="canonical" href="">
+<meta name="theme-color" content="#111214">
+<!--
+  ============================================================================
+  NORTHSTEP FOOTWEAR – single-file demo D2C store (GitHub Pages ready)
+  PRACTICE / PORTFOLIO PROJECT. NorthStep is a fictional brand. No real
+  payments are taken. Read README.md before connecting any Google account.
+
+  >>> SITE VERIFICATION (Merchant Center / Search Console) <<<
+  Paste verification meta tags directly below this comment. They must be in
+  the static HTML (not injected by JavaScript) for Google to detect them.
+  e.g. <meta name="google-site-verification" content="YOUR_TOKEN">
+  ============================================================================
+-->
+<style>
+:root{
+  --ink:#111214; --charcoal:#2a2c31; --grey:#5b5f68; --line:#e3e5e9; --soft:#f4f5f7;
+  --white:#fff; --accent:#2456f5; --accent-ink:#1a44cc; --accent-soft:#eaf0ff;
+  --ok:#137a43; --ok-soft:#e7f5ed; --warn:#8a5a00; --warn-soft:#fff4dc; --err:#b42318; --err-soft:#fdecea;
+  --r:10px; --shadow:0 1px 2px rgba(17,18,20,.06),0 4px 16px rgba(17,18,20,.06);
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font);color:var(--ink);background:var(--white);line-height:1.55;font-size:16px}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:#fff;padding:8px 14px;z-index:100;border-radius:6px}
+.skip:focus{left:8px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.2;letter-spacing:-.01em;margin:0 0 .5em}
+h1{font-size:clamp(1.7rem,3.4vw,2.6rem)} h2{font-size:clamp(1.3rem,2.4vw,1.75rem)} h3{font-size:1.08rem}
+p{margin:0 0 1em}
+.muted{color:var(--grey)} .small{font-size:.875rem} .xs{font-size:.78rem}
+/* announcement + header */
+.announce{background:var(--ink);color:#fff;font-size:.85rem;text-align:center;padding:8px 12px}
+.announce a{color:#fff}
+header.site{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:saturate(1.4) blur(6px)}
+.hbar{display:flex;align-items:center;gap:16px;height:66px}
+.logo svg{flex:none}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;letter-spacing:.14em;font-size:1.05rem;white-space:nowrap}
+.logo small{font-weight:500;letter-spacing:.08em;color:var(--grey);font-size:.62rem;display:block;margin-top:-2px}
+nav.main{display:flex;gap:4px;margin-left:12px}
+nav.main a{text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:500;font-size:.95rem}
+nav.main a:hover,nav.main a[aria-current="page"]{background:var(--soft)}
+.hright{margin-left:auto;display:flex;align-items:center;gap:6px}
+.search{display:flex;align-items:center;background:var(--soft);border-radius:999px;padding:0 6px 0 14px;height:40px;width:240px}
+.search input{border:0;background:transparent;outline:none;width:100%;font-size:.92rem}
+.iconbtn{position:relative;display:inline-grid;place-items:center;width:42px;height:42px;border-radius:999px;border:0;background:transparent;cursor:pointer;text-decoration:none}
+.iconbtn:hover{background:var(--soft)}
+.badge{position:absolute;top:3px;right:2px;background:var(--accent);color:#fff;font-size:.68rem;font-weight:700;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;padding:0 4px}
+.menu-toggle{display:none}
+@media (max-width:980px){
+  nav.main{display:none;position:absolute;top:66px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);flex-direction:column;padding:10px 16px;margin:0}
+  nav.main.open{display:flex}
+  .menu-toggle{display:inline-grid}
+  .search{width:auto;flex:1}
+  .hright{flex:1;justify-content:flex-end}
+}
+@media (max-width:560px){ .search{display:none} .search.show{display:flex;position:absolute;left:12px;right:12px;top:74px} }
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:#fff;font-weight:600;text-decoration:none;cursor:pointer;transition:background .15s,color .15s}
+.btn:hover{background:var(--charcoal)}
+.btn.alt{background:#fff;color:var(--ink)} .btn.alt:hover{background:var(--soft)}
+.btn.accent{background:var(--accent);border-color:var(--accent)} .btn.accent:hover{background:var(--accent-ink)}
+.btn.sm{height:38px;padding:0 16px;font-size:.9rem}
+.btn.block{width:100%}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.link{background:none;border:0;padding:0;color:var(--accent-ink);text-decoration:underline;cursor:pointer}
+/* hero */
+.hero{background:linear-gradient(120deg,#0f1013 0%,#23262c 60%,#1a2240 100%);color:#fff;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:28px;min-height:480px;padding-top:36px;padding-bottom:36px}
+.hero p.lead{color:#c9ced8;font-size:1.1rem;max-width:34ch}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.hero .btn{background:#fff;color:var(--ink);border-color:#fff}
+.hero .btn.alt{background:transparent;color:#fff;border-color:#fff}
+.hero .btn.alt:hover{background:rgba(255,255,255,.1)}
+.hero-art{position:relative}
+.hero-art .shoe{filter:drop-shadow(0 30px 30px rgba(0,0,0,.45))}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;font-weight:700;color:#8fb0ff}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr;min-height:0}.hero-art{order:-1;max-width:420px;margin:0 auto}}
+/* sections */
+section.block{padding:52px 0}
+.sec-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:20px}
+.sec-head a{font-weight:600;font-size:.95rem}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media (max-width:1020px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:720px){.grid{grid-template-columns:repeat(2,1fr);gap:14px}}
+/* product card */
+.card{position:relative;display:flex;flex-direction:column;text-decoration:none;border-radius:var(--r);transition:transform .15s}
+.card .img{background:var(--soft);border-radius:var(--r);aspect-ratio:1/1;overflow:hidden;display:grid;place-items:center}
+.card .img svg{width:100%;height:100%}
+.card:hover .img{outline:1.5px solid var(--line)}
+.card .meta{padding:10px 2px 0}
+.card .t{font-weight:600;font-size:.97rem;margin:0}
+.card .c{color:var(--grey);font-size:.86rem}
+.price{font-weight:700}
+.price s{color:var(--grey);font-weight:500;margin-left:6px;font-size:.9em}
+.price .now{color:var(--err)}
+.tag{position:absolute;top:10px;left:10px;background:#fff;border:1px solid var(--line);font-size:.72rem;font-weight:700;padding:3px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.06em}
+.tag.sale{background:var(--err);color:#fff;border-color:var(--err)}
+.tag.oos{background:var(--charcoal);color:#fff;border-color:var(--charcoal)}
+.tag.new{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* category tiles */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tile{position:relative;border-radius:var(--r);overflow:hidden;background:var(--soft);text-decoration:none;aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:flex-end}
+.tile svg{position:absolute;inset:0;width:100%;height:100%}
+.tile span{position:relative;margin:14px;background:#fff;padding:10px 14px;border-radius:999px;font-weight:700;align-self:flex-start;box-shadow:var(--shadow)}
+@media (max-width:820px){.tiles{grid-template-columns:repeat(2,1fr)}}
+/* values */
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.value{border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.value svg{width:28px;height:28px;margin-bottom:10px;color:var(--accent)}
+@media (max-width:820px){.values{grid-template-columns:repeat(2,1fr)}}
+/* newsletter */
+.news{background:var(--soft);border-radius:16px;padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
+.news form{display:flex;gap:10px;flex-wrap:wrap}
+.news input{flex:1;min-width:200px}
+@media (max-width:820px){.news{grid-template-columns:1fr}}
+/* forms */
+label{font-weight:600;font-size:.9rem;display:block;margin-bottom:6px}
+input[type=text],input[type=email],input[type=tel],input[type=number],input[type=url],select,textarea{width:100%;height:46px;border:1.5px solid #c9ccd3;border-radius:8px;padding:0 12px;background:#fff}
+textarea{height:auto;padding:10px 12px}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
+input[aria-invalid="true"],select[aria-invalid="true"]{border-color:var(--err)}
+.field{margin-bottom:14px}
+.err{color:var(--err);font-size:.84rem;margin-top:5px;display:none}
+.field.bad .err{display:block}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.row2{grid-template-columns:1fr}}
+.hint{font-size:.8rem;color:var(--grey);margin-top:4px}
+/* breadcrumbs */
+.crumbs{font-size:.85rem;color:var(--grey);padding:16px 0 8px}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.crumbs li+li::before{content:"/";margin-right:6px;color:#b0b4bb}
+.crumbs a{text-decoration:none} .crumbs a:hover{text-decoration:underline}
+/* shop */
+.shop{display:grid;grid-template-columns:250px 1fr;gap:30px;padding-bottom:50px}
+.filters details{border-bottom:1px solid var(--line);padding:12px 0}
+.filters summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+.filters summary::after{content:"+";font-weight:400}
+.filters details[open] summary::after{content:"–"}
+.filters .opts{padding-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+.chk{display:flex;align-items:center;gap:8px;font-weight:500;font-size:.92rem;margin:0;width:100%;cursor:pointer}
+.chk input{width:18px;height:18px;accent-color:var(--accent)}
+.sizechip{border:1.5px solid #c9ccd3;background:#fff;border-radius:8px;min-width:46px;height:38px;cursor:pointer;font-weight:600;font-size:.88rem}
+.sizechip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.toolbar select{width:auto;height:40px}
+.mob-filters{display:none}
+@media (max-width:900px){.shop{grid-template-columns:1fr}.filters{display:none}.filters.open{display:block}.mob-filters{display:inline-flex}}
+.empty{text-align:center;padding:60px 20px;border:1px dashed var(--line);border-radius:var(--r)}
+/* pdp */
+.pdp{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;padding-bottom:40px}
+@media (max-width:900px){.pdp{grid-template-columns:1fr;gap:20px}}
+.gallery .main{background:var(--soft);border-radius:14px;aspect-ratio:1/1;overflow:hidden}
+.gallery .main svg{width:100%;height:100%}
+.thumbs{display:flex;gap:10px;margin-top:10px}
+.thumbs button{width:84px;aspect-ratio:1/1;border-radius:10px;border:2px solid transparent;background:var(--soft);padding:0;cursor:pointer;overflow:hidden}
+.thumbs button[aria-pressed="true"]{border-color:var(--ink)}
+.buy .sku{font-size:.8rem;color:var(--grey);letter-spacing:.04em}
+.buy .price{font-size:1.5rem;margin:6px 0 2px}
+.vat{font-size:.8rem;color:var(--grey);margin-bottom:18px}
+.swatches{display:flex;gap:10px;margin:8px 0 18px;flex-wrap:wrap}
+.swatch{display:flex;align-items:center;gap:8px;border:1.5px solid #c9ccd3;border-radius:999px;padding:5px 12px 5px 6px;text-decoration:none;font-size:.88rem;font-weight:600}
+.swatch i{width:24px;height:24px;border-radius:50%;border:1px solid rgba(0,0,0,.15);display:block}
+.swatch[aria-current="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.sizes{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px;margin:8px 0 6px}
+.sizes button{height:46px;border:1.5px solid #c9ccd3;background:#fff;border-radius:8px;font-weight:600;cursor:pointer}
+.sizes button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.sizes button:disabled{color:#a1a5ad;background:repeating-linear-gradient(135deg,#fff,#fff 6px,#f2f3f5 6px,#f2f3f5 12px);cursor:not-allowed;text-decoration:line-through}
+.stock{font-size:.9rem;font-weight:600;margin:10px 0}
+.stock.ok{color:var(--ok)} .stock.low{color:var(--warn)} .stock.none{color:var(--err)}
+.qtyrow{display:flex;gap:12px;align-items:end;margin:14px 0}
+.qty{display:flex;align-items:center;border:1.5px solid #c9ccd3;border-radius:999px;height:48px}
+.qty button{width:42px;height:100%;border:0;background:none;cursor:pointer;font-size:1.2rem}
+.qty input{width:44px;border:0;text-align:center;height:100%;padding:0;-moz-appearance:textfield}
+.qty input::-webkit-inner-spin-button{-webkit-appearance:none}
+.formerr{background:var(--err-soft);color:var(--err);border-radius:8px;padding:10px 12px;font-size:.9rem;font-weight:600;margin:8px 0;display:none}
+.formerr.show{display:block}
+.acc details{border-top:1px solid var(--line);padding:14px 0}
+.acc details:last-child{border-bottom:1px solid var(--line)}
+.acc summary{font-weight:700;cursor:pointer}
+.perks{display:grid;gap:8px;margin:16px 0;font-size:.9rem}
+.perks div{display:flex;gap:10px;align-items:center}
+.perks svg{width:20px;height:20px;color:var(--accent);flex:none}
+/* cart */
+.cartlay{display:grid;grid-template-columns:1fr 360px;gap:30px;padding-bottom:50px}
+@media (max-width:900px){.cartlay{grid-template-columns:1fr}}
+.line{display:grid;grid-template-columns:96px 1fr auto;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.line .thumb{background:var(--soft);border-radius:10px;aspect-ratio:1/1;overflow:hidden}
+.line .qty{height:38px;width:max-content;margin-top:8px}
+.line .qty button{width:34px}
+.summary{background:var(--soft);border-radius:14px;padding:22px;align-self:start;position:sticky;top:86px}
+.summary .r{display:flex;justify-content:space-between;margin:8px 0}
+.summary .tot{font-size:1.15rem;font-weight:800;border-top:1px solid #d7dae0;padding-top:12px;margin-top:12px}
+.note{border-radius:10px;padding:12px 14px;font-size:.9rem;margin:12px 0}
+.note.info{background:var(--accent-soft);color:#16307a}
+.note.warn{background:var(--warn-soft);color:var(--warn)}
+.note.ok{background:var(--ok-soft);color:var(--ok)}
+.note.err{background:var(--err-soft);color:var(--err)}
+.testbar{background:repeating-linear-gradient(135deg,#fff4dc,#fff4dc 14px,#ffe9b8 14px,#ffe9b8 28px);border:1px solid #f0cf86;color:#5c3d00;border-radius:10px;padding:12px 16px;font-weight:600;margin:16px 0}
+.radio{display:flex;gap:12px;align-items:flex-start;border:1.5px solid #c9ccd3;border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer;font-weight:500}
+.radio input{margin-top:4px;accent-color:var(--accent);width:18px;height:18px}
+.radio:has(input:checked){border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.radio.disabled{opacity:.5;cursor:not-allowed}
+fieldset{border:0;padding:0;margin:0 0 26px}
+legend{font-weight:800;font-size:1.15rem;margin-bottom:12px;padding:0}
+/* policy + admin */
+.prose{max-width:780px;padding-bottom:50px}
+.prose h2{margin-top:1.6em}
+.prose ul{padding-left:1.2em}
+.ph{background:var(--warn-soft);color:var(--warn);padding:1px 6px;border-radius:4px;font-weight:600}
+.panel{border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:22px}
+.panel h2{font-size:1.2rem}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+table.data{width:100%;border-collapse:collapse;font-size:.84rem}
+table.data th,table.data td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;white-space:nowrap}
+table.data th{background:var(--soft);font-weight:700;position:sticky;top:0;cursor:default}
+table.data th.sortable{cursor:pointer}
+table.data td.num,table.data th.num{text-align:right;font-variant-numeric:tabular-nums}
+table.data tfoot td{font-weight:800;background:var(--soft)}
+.tablewrap{overflow:auto;max-height:520px;border:1px solid var(--line);border-radius:10px}
+.pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:.74rem;font-weight:700}
+.pill.e{background:var(--err-soft);color:var(--err)} .pill.w{background:var(--warn-soft);color:var(--warn)} .pill.i{background:var(--accent-soft);color:#16307a} .pill.o{background:var(--ok-soft);color:var(--ok)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--soft);border-radius:12px;padding:14px}
+.kpi b{display:block;font-size:1.35rem;font-variant-numeric:tabular-nums}
+.kpi span{font-size:.78rem;color:var(--grey);text-transform:uppercase;letter-spacing:.06em}
+.simbanner{background:#1a1b1f;color:#fff;border-radius:12px;padding:14px 18px;margin:12px 0 18px;font-weight:600}
+.simbanner b{color:#ffd466}
+.bars .b{display:grid;grid-template-columns:110px 1fr 90px;gap:10px;align-items:center;margin:6px 0;font-size:.85rem}
+.bars .track{background:var(--soft);border-radius:6px;height:22px;position:relative;overflow:hidden}
+.bars .fill{position:absolute;left:0;top:0;bottom:0;border-radius:6px}
+pre.log{background:#0f1013;color:#d6e2ff;border-radius:10px;padding:14px;font-size:.78rem;max-height:420px;overflow:auto;white-space:pre-wrap}
+code{background:var(--soft);padding:1px 6px;border-radius:4px;font-size:.88em}
+ol.steps{padding-left:1.3em} ol.steps li{margin-bottom:8px}
+/* footer */
+footer.site{background:var(--ink);color:#c9ced8;margin-top:30px;padding:46px 0 24px;font-size:.92rem}
+footer.site a{color:#fff;text-decoration:none} footer.site a:hover{text-decoration:underline}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:26px}
+.fgrid h3{color:#fff;font-size:.95rem}
+.fgrid ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.fbottom{border-top:1px solid #2c2f36;margin-top:30px;padding-top:18px;font-size:.8rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:820px){.fgrid{grid-template-columns:1fr 1fr}}
+/* cookie banner + toast */
+.cookie{position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.18);padding:18px;z-index:60;display:none}
+.cookie.show{display:block}
+.cookie .btnrow .btn{flex:1;min-width:120px}
+.cookie .prefs{display:none;margin:10px 0;border-top:1px solid var(--line);padding-top:10px}
+.cookie .prefs.show{display:block}
+.toast{position:fixed;top:80px;right:16px;background:var(--ink);color:#fff;padding:12px 16px;border-radius:10px;z-index:70;box-shadow:var(--shadow);transform:translateY(-12px);opacity:0;transition:.2s;pointer-events:none;max-width:320px}
+.toast.show{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#app">Skip to main content</a>
+<div class="announce" id="announce"></div>
+<header class="site">
+  <div class="wrap hbar">
+    <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <a class="logo" href="./" aria-label="NorthStep Footwear home">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#111214"/><path d="M16 5l2.6 7.9H27l-6.8 4.9 2.6 8L16 21l-6.8 4.8 2.6-8L5 12.9h8.4z" fill="#fff"/><circle cx="24.5" cy="7.5" r="2.5" fill="#2456f5"/></svg>
+      <span>NORTHSTEP<small>FOOTWEAR</small></span>
+    </a>
+    <nav class="main" id="mainNav" aria-label="Main">
+      <a href="?page=shop&amp;g=men">Men</a>
+      <a href="?page=shop&amp;g=women">Women</a>
+      <a href="?page=shop&amp;cat=trainers">Trainers</a>
+      <a href="?page=shop&amp;cat=running">Running</a>
+      <a href="?page=shop&amp;cat=casual">Casual</a>
+      <a href="?page=shop&amp;cat=boots">Boots</a>
+      <a href="?page=shop&amp;sale=1">Sale</a>
+    </nav>
+    <div class="hright">
+      <form class="search" id="searchForm" role="search">
+        <label for="q" class="sr-only">Search products</label>
+        <input id="q" name="q" type="search" placeholder="Search shoes…" autocomplete="off">
+        <button class="iconbtn" style="width:32px;height:32px" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
+      </form>
+      <button class="iconbtn" id="searchToggle" aria-label="Show search" style="display:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
+      <a class="iconbtn" href="?page=account" aria-label="Account and orders"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a>
+      <a class="iconbtn" href="?page=cart" aria-label="Basket" id="cartLink"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="badge" id="cartCount" hidden>0</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="app" tabindex="-1"></main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="logo" style="color:#fff;margin-bottom:10px"><span>NORTHSTEP<small style="color:#9aa0ab">FOOTWEAR</small></span></div>
+        <p>Every Step, Your Style. Affordable, comfortable everyday footwear for the UK.</p>
+        <p class="small" id="footContact"></p>
+        <p class="xs" style="color:#9aa0ab">Demo portfolio store. NorthStep is a fictional brand; no real orders are fulfilled and no payments are taken.</p>
+      </div>
+      <div><h3>Shop</h3><ul>
+        <li><a href="?page=shop&amp;g=men">Men's footwear</a></li><li><a href="?page=shop&amp;g=women">Women's footwear</a></li>
+        <li><a href="?page=shop&amp;cat=trainers">Trainers &amp; sneakers</a></li><li><a href="?page=shop&amp;cat=running">Running shoes</a></li>
+        <li><a href="?page=shop&amp;cat=casual">Casual shoes</a></li><li><a href="?page=shop&amp;cat=boots">Boots</a></li></ul></div>
+      <div><h3>Help</h3><ul>
+        <li><a href="?page=delivery">Delivery</a></li><li><a href="?page=returns">Returns &amp; refunds</a></li>
+        <li><a href="?page=contact">Contact us</a></li><li><a href="?page=sizeguide">Size guide</a></li></ul></div>
+      <div><h3>Legal</h3><ul>
+        <li><a href="?page=privacy">Privacy policy</a></li><li><a href="?page=cookies">Cookie policy</a></li>
+        <li><a href="?page=terms">Terms &amp; conditions</a></li><li><button class="link" style="color:#fff" id="cookieSettings">Cookie settings</button></li>
+        <li><a href="?page=admin">Store admin (demo)</a></li></ul></div>
+    </div>
+    <div class="fbottom"><span>© <span id="yr"></span> NorthStep Footwear (fictional demo brand)</span><span>Prices in GBP and include VAT.</span></div>
+  </div>
+</footer>
+
+<div class="cookie" id="cookie" role="dialog" aria-modal="false" aria-labelledby="cookieTitle">
+  <h3 id="cookieTitle" style="margin-bottom:6px">Cookies on NorthStep</h3>
+  <p class="small muted" style="margin-bottom:8px">We use essential storage to run the basket. With your permission we'd also use analytics cookies to understand how the site is used, and advertising cookies to measure our ads. You can change this at any time via “Cookie settings” in the footer. <a href="?page=cookies">Cookie policy</a></p>
+  <div class="prefs" id="cookiePrefs">
+    <label class="chk"><input type="checkbox" checked disabled> Essential (always on)</label>
+    <label class="chk"><input type="checkbox" id="cAnalytics"> Analytics (Google Analytics 4)</label>
+    <label class="chk"><input type="checkbox" id="cAds"> Advertising (Google Ads conversion measurement &amp; remarketing)</label>
+  </div>
+  <div class="btnrow">
+    <button class="btn sm alt" id="cReject">Reject non-essential</button>
+    <button class="btn sm alt" id="cManage">Manage</button>
+    <button class="btn sm" id="cAccept">Accept all</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =============================================================================
+   1. CONFIGURATION — EDIT THESE BEFORE DEPLOYING
+   Everything marked [PLACEHOLDER] must be replaced or reviewed before any
+   real launch. This store is a learning/portfolio demo.
+============================================================================= */
+const CONFIG = {
+  brand: "NorthStep",
+  storeName: "NorthStep Footwear",
+  tagline: "Every Step, Your Style.",
+  // Public URL where index.html is hosted, WITH trailing slash.
+  // e.g. "https://your-username.github.io/northstep/"  (can also be overridden in ?page=admin)
+  siteUrl: "https://YOUR-USERNAME.github.io/northstep/",
+  imagePath: "images/",                 // folder (relative to siteUrl) holding exported PNG product images
+  ga4MeasurementId: "G-XXXXXXXXXX",     // [PLACEHOLDER] GA4 Measurement ID (used only if no GTM ID is set)
+  gtmContainerId: "GTM-XXXXXXX",        // [PLACEHOLDER] Google Tag Manager container ID (preferred)
+  testMode: true,                       // true = all orders are simulated TEST orders (no payment provider connected)
+  currency: "GBP",
+  locale: "en-GB",
+  vatRate: 0.20,                        // UK standard VAT – prices are VAT-inclusive
+  freeDeliveryThreshold: 50,            // free Standard delivery to UK mainland over this subtotal
+  newInDays: 60,
+  returnsDays: 30,                      // [REVIEW] your returns window (statutory rights apply regardless)
+  contact: {                            // [PLACEHOLDER] replace before launch – do NOT invent a real address
+    email: "hello@example.com",
+    phone: "[Add customer service phone]",
+    hours: "Mon–Fri, 9am–5pm (UK time)",
+    address: "[Registered business address – add before launch]",
+    company: "[Registered company name & number – add before launch]"
+  },
+  // UK delivery zones. Districts are matched on the postcode outward code (e.g. "IV2").
+  zones: {
+    mainland: { label: "UK mainland" },
+    highlands: { label: "Scottish Highlands & Islands / offshore", districts: [["AB",31,38],["AB",44,56],["FK",17,21],["HS",1,99],["IV",1,99],["KA",27,28],["KW",1,99],["PA",20,49],["PA",60,78],["PH",17,26],["PH",30,44],["PH",49,50],["PO",30,41],["TR",21,25],["ZE",1,99]] },
+    ni: { label: "Northern Ireland", areas: ["BT"] },
+    unsupported: { label: "Channel Islands & Isle of Man", areas: ["GY","JE","IM"] }
+  },
+  delivery: {
+    mainland:  [ { id:"standard", name:"Standard delivery", eta:"3–5 working days", price:3.99, freeOver:50 },
+                 { id:"express",  name:"Next working day",  eta:"Order by 2pm, Mon–Thu", price:6.99 } ],
+    highlands: [ { id:"standard", name:"Standard delivery", eta:"4–7 working days", price:6.99 } ],
+    ni:        [ { id:"standard", name:"Standard delivery", eta:"4–6 working days", price:5.99 } ]
+  },
+  // Demo discount codes – behaviour is shown to shoppers on the basket page.
+  discounts: {
+    WELCOME10: { type:"percent", value:10, fullPriceOnly:true, label:"10% off full-price items" },
+    SAVE5:     { type:"fixed", value:5, minSubtotal:40, label:"£5 off orders over £40" },
+    FREEDEL:   { type:"freeship", label:"Free Standard delivery" }
+  },
+  google: { productCategory: "187" }    // Google product taxonomy: Apparel & Accessories > Shoes
+};
+
+/* =============================================================================
+   2. PRODUCT DATABASE — single source of truth for store, feed and analytics
+   id = product (colour) ID, group = item_group_id, variant ID = id + "-" + size
+============================================================================= */
+const MEN = [6,7,8,9,10,11,12], WOMEN = [3,4,5,6,7,8], UNISEX = [4,5,6,7,8,9,10,11];
+const FAMILY = {
+  "NS-AERO-M": { name:"Aero Everyday Trainer", gender:"male", cat:"trainers", shape:"trainer", sizes:MEN, price:49.99, cost:17.5,
+    desc:"A clean, low-profile trainer built for everyday wear. The Aero pairs a soft synthetic-leather upper with a cushioned EVA footbed and a flexible rubber cupsole, so it works as well on the commute as it does at the weekend.",
+    bullets:["Soft synthetic-leather upper","Removable cushioned EVA footbed","Flexible, grippy rubber cupsole","Padded collar and tongue"],
+    materials:"Upper: synthetic leather. Lining: textile. Footbed: removable EVA. Sole: rubber.", care:"Wipe clean with a damp cloth. Air dry away from direct heat. Do not machine wash." },
+  "NS-METRO-M": { name:"Metro Leather Trainer", gender:"male", cat:"trainers", shape:"trainer", sizes:MEN, price:64.99, cost:24,
+    desc:"Smart enough for the office, relaxed enough for the weekend. A leather upper, padded collar and stitched rubber sole give the Metro a premium finish for everyday wear.",
+    bullets:["Leather upper with contrast heel tab","Padded collar for comfort","Stitched rubber cupsole","Cushioned foam footbed"],
+    materials:"Upper: leather. Lining: textile. Footbed: cushioned foam. Sole: stitched rubber.", care:"Wipe with a damp cloth and use a neutral leather cleaner. Allow to dry naturally away from heat." },
+  "NS-LUNA-W": { name:"Luna Lifestyle Sneaker", gender:"female", cat:"trainers", shape:"trainer", sizes:WOMEN, price:44.99, cost:15.5,
+    desc:"Our easy-to-style everyday sneaker. The Luna has a lightweight build, soft padded lining and a slightly raised sole that pairs with everything from jeans to summer dresses.",
+    bullets:["Lightweight synthetic upper","Soft padded lining","Slightly raised rubber sole","Tonal heel detail"],
+    materials:"Upper: synthetic. Lining: textile. Footbed: foam. Sole: rubber.", care:"Wipe clean with a damp cloth. Air dry. Do not machine wash." },
+  "NS-HALO-W": { name:"Halo Platform Sneaker", gender:"female", cat:"trainers", shape:"platform", sizes:WOMEN, price:54.99, cost:19,
+    desc:"Extra height without sacrificing comfort. The Halo sits on a 4cm lightweight platform sole with a cushioned footbed, finished with a clean, minimal upper.",
+    bullets:["4cm lightweight platform sole","Cushioned footbed","Minimal synthetic-leather upper","Pull tab at heel"],
+    materials:"Upper: synthetic leather. Lining: textile. Footbed: foam. Sole: lightweight rubber/EVA.", care:"Wipe clean with a damp cloth. Air dry away from direct heat." },
+  "NS-STRIDE-M": { name:"Stride Pro Running Shoe", gender:"male", cat:"running", shape:"runner", sizes:MEN, price:79.99, cost:30,
+    desc:"Our most cushioned running shoe. A breathable engineered-mesh upper, responsive foam midsole and grippy rubber outsole make the Stride Pro a dependable partner for daily training runs and longer weekend miles.",
+    bullets:["Breathable engineered-mesh upper","Responsive foam midsole","Durable rubber outsole","Reflective heel detail"],
+    materials:"Upper: engineered mesh. Midsole: EVA foam. Outsole: rubber. Footbed: removable foam.", care:"Remove footbed and loosen laces. Hand wash with mild soap and cool water. Air dry; do not tumble dry." },
+  "NS-STRIDE-W": { name:"Stride Pro Running Shoe", gender:"female", cat:"running", shape:"runner", sizes:WOMEN, price:79.99, cost:30,
+    desc:"Our most cushioned running shoe, built on a women's-specific last. A breathable engineered-mesh upper, responsive foam midsole and grippy rubber outsole for daily runs and longer weekend miles.",
+    bullets:["Women's-specific fit","Breathable engineered-mesh upper","Responsive foam midsole","Durable rubber outsole"],
+    materials:"Upper: engineered mesh. Midsole: EVA foam. Outsole: rubber. Footbed: removable foam.", care:"Remove footbed and loosen laces. Hand wash with mild soap and cool water. Air dry; do not tumble dry." },
+  "NS-PACE-U": { name:"Pace Lite Runner", gender:"unisex", cat:"running", shape:"runner", sizes:UNISEX, price:49.99, cost:16,
+    desc:"A lightweight, no-fuss runner for gym sessions, parkruns and everyday training. Minimal overlays keep the weight down while a foam midsole adds just enough bounce.",
+    bullets:["Lightweight knit-mesh upper","Foam midsole","Flexible rubber outsole","Unisex sizing (UK 4–11)"],
+    materials:"Upper: knit mesh. Midsole: EVA foam. Outsole: rubber.", care:"Hand wash with mild soap and cool water. Air dry." },
+  "NS-HARB-M": { name:"Harbour Canvas Slip-On", gender:"male", cat:"casual", shape:"slipon", sizes:MEN, price:35, cost:11,
+    desc:"Laid-back canvas slip-ons for warm days and easy weekends. Elasticated side panels make them quick to pull on, and a vulcanised rubber sole adds grip.",
+    bullets:["Cotton canvas upper","Elasticated side gussets","Padded footbed","Vulcanised rubber sole"],
+    materials:"Upper: cotton canvas. Lining: textile. Sole: vulcanised rubber.", care:"Spot clean with mild soap and a soft brush. Air dry." },
+  "NS-HARB-W": { name:"Harbour Canvas Slip-On", gender:"female", cat:"casual", shape:"slipon", sizes:WOMEN, price:35, cost:11,
+    desc:"Laid-back canvas slip-ons for warm days and easy weekends. Elasticated side panels make them quick to pull on, and a vulcanised rubber sole adds grip.",
+    bullets:["Cotton canvas upper","Elasticated side gussets","Padded footbed","Vulcanised rubber sole"],
+    materials:"Upper: cotton canvas. Lining: textile. Sole: vulcanised rubber.", care:"Spot clean with mild soap and a soft brush. Air dry." },
+  "NS-CAMD-W": { name:"Camden Knit Slip-On", gender:"female", cat:"casual", shape:"slipon", sizes:WOMEN, price:39.99, cost:13,
+    desc:"A sock-like knit slip-on that's soft, breathable and light. Ideal for travelling, errands and all-day comfort.",
+    bullets:["Stretch knit upper","Sock-like fit","Lightweight foam sole","Heel pull loop"],
+    materials:"Upper: polyester knit. Footbed: foam. Sole: EVA/rubber.", care:"Hand wash cold with mild detergent. Reshape and air dry." },
+  "NS-RIDGE-M": { name:"Ridge Chelsea Boot", gender:"male", cat:"boots", shape:"chelsea", sizes:MEN, price:79.99, cost:31,
+    desc:"A modern take on a classic Chelsea boot. Elasticated side panels and a heel pull tab make the Ridge easy to wear, while a chunky rubber sole handles wet British pavements.",
+    bullets:["Leather upper","Elasticated side panels","Heel pull tab","Chunky rubber sole"],
+    materials:"Upper: leather. Lining: textile. Sole: rubber.", care:"Brush off dirt, wipe with a damp cloth and condition with a suitable leather product." },
+  "NS-FELL-M": { name:"Fell Hiker Boot", gender:"male", cat:"boots", shape:"hiker", sizes:MEN, price:74.99, cost:28,
+    desc:"A rugged, everyday hiker-style boot with a padded collar, speed-lace hooks and a deep-lug rubber sole for countryside walks and city winters.",
+    bullets:["Suede-effect upper","Padded collar","Speed-lace hooks","Deep-lug rubber sole"],
+    materials:"Upper: synthetic suede. Lining: textile. Sole: rubber.", care:"Brush with a soft suede brush when dry. Avoid soaking." },
+  "NS-RIDGE-W": { name:"Ridge Chelsea Boot", gender:"female", cat:"boots", shape:"chelsea", sizes:WOMEN, price:74.99, cost:28,
+    desc:"A modern take on a classic Chelsea boot. Elasticated side panels and a heel pull tab make the Ridge easy to wear, while a chunky rubber sole handles wet British pavements.",
+    bullets:["Leather upper","Elasticated side panels","Heel pull tab","Chunky rubber sole"],
+    materials:"Upper: leather. Lining: textile. Sole: rubber.", care:"Brush off dirt, wipe with a damp cloth and condition with a suitable leather product." },
+  "NS-THORN-W": { name:"Thornbury Lace-Up Boot", gender:"female", cat:"boots", shape:"hiker", sizes:WOMEN, price:64.99, cost:23,
+    desc:"A lace-up ankle boot with a padded collar and cleated sole – a versatile autumn and winter essential.",
+    bullets:["Synthetic-leather upper","Padded collar","Side zip for easy on/off","Cleated rubber sole"],
+    materials:"Upper: synthetic leather. Lining: textile. Sole: rubber.", care:"Wipe clean with a damp cloth. Allow to dry naturally." }
+};
+// Colour products. stock[] aligns with the family's sizes[].
+const COLOURWAYS = [
+  { id:"NS-AERO-M-BLK", fam:"NS-AERO-M", colour:"Black", cg:"Black", hex:{u:"#1d1d1f",s:"#f4f4f4",a:"#2456f5"}, stock:[6,14,22,25,18,9,4], pop:98, added:"2026-03-10" },
+  { id:"NS-AERO-M-WHT", fam:"NS-AERO-M", colour:"White", cg:"White", hex:{u:"#f7f7f7",s:"#e6e6e6",a:"#2456f5"}, stock:[3,10,16,0,12,7,2], pop:92, added:"2026-03-10" },
+  { id:"NS-METRO-M-WHT", fam:"NS-METRO-M", colour:"White/Navy", cg:"White", hex:{u:"#fafafa",s:"#eeeeee",a:"#1b2a4a"}, stock:[4,8,12,12,9,5,3], pop:80, added:"2026-09-25" },
+  { id:"NS-LUNA-W-BLS", fam:"NS-LUNA-W", colour:"White/Blush", cg:"Pink", hex:{u:"#fbf7f5",s:"#f2e2dc",a:"#e3a197"}, stock:[5,12,18,15,8,3], pop:94, added:"2026-04-02", sale:34.99 },
+  { id:"NS-LUNA-W-BLK", fam:"NS-LUNA-W", colour:"Black", cg:"Black", hex:{u:"#1f1f22",s:"#ffffff",a:"#c9c9cf"}, stock:[4,9,14,11,6,2], pop:85, added:"2026-04-02" },
+  { id:"NS-HALO-W-WHT", fam:"NS-HALO-W", colour:"White", cg:"White", hex:{u:"#ffffff",s:"#efefef",a:"#2456f5"}, stock:[6,12,15,14,7,3], pop:90, added:"2026-10-05" },
+  { id:"NS-HALO-W-GRY", fam:"NS-HALO-W", colour:"Cool Grey", cg:"Grey", hex:{u:"#a7abb3",s:"#f4f4f4",a:"#3a3d44"}, stock:[2,6,8,0,4,1], pop:70, added:"2026-10-05" },
+  { id:"NS-STRIDE-M-BLU", fam:"NS-STRIDE-M", colour:"Black/Electric Blue", cg:"Black", hex:{u:"#1b1c20",s:"#e9edf5",a:"#2456f5"}, stock:[4,9,15,18,14,8,3], pop:88, added:"2026-02-15" },
+  { id:"NS-STRIDE-M-GRY", fam:"NS-STRIDE-M", colour:"Grey/White", cg:"Grey", hex:{u:"#8e939b",s:"#ffffff",a:"#22252b"}, stock:[2,5,8,9,7,4,0], pop:76, added:"2026-02-15", sale:64.99 },
+  { id:"NS-STRIDE-W-CHR", fam:"NS-STRIDE-W", colour:"Charcoal", cg:"Grey", hex:{u:"#3a3d44",s:"#f4f4f4",a:"#7fa7ff"}, stock:[4,9,13,12,7,3], pop:84, added:"2026-02-15" },
+  { id:"NS-STRIDE-W-SKY", fam:"NS-STRIDE-W", colour:"Sky Blue", cg:"Blue", hex:{u:"#a9c6ef",s:"#ffffff",a:"#2a3550"}, stock:[3,7,10,9,5,2], pop:72, added:"2026-02-15" },
+  { id:"NS-PACE-U-NVY", fam:"NS-PACE-U", colour:"Navy", cg:"Blue", hex:{u:"#1c2740",s:"#f2f2f2",a:"#ff6a3d"}, stock:[3,6,9,11,12,10,6,3], pop:78, added:"2026-10-10" },
+  { id:"NS-PACE-U-BLK", fam:"NS-PACE-U", colour:"Black/White", cg:"Black", hex:{u:"#141416",s:"#ffffff",a:"#ffffff"}, stock:[2,5,7,9,10,8,5,2], pop:66, added:"2026-10-10" },
+  { id:"NS-HARB-M-NVY", fam:"NS-HARB-M", colour:"Navy", cg:"Blue", hex:{u:"#24314f",s:"#f5f2ea",a:"#f5f2ea"}, stock:[5,10,16,18,12,6,3], pop:74, added:"2026-05-01" },
+  { id:"NS-HARB-M-STN", fam:"NS-HARB-M", colour:"Stone", cg:"Beige", hex:{u:"#d8cfbf",s:"#f5f2ea",a:"#8b8172"}, stock:[3,7,10,10,8,4,2], pop:60, added:"2026-05-01" },
+  { id:"NS-HARB-W-WHT", fam:"NS-HARB-W", colour:"White", cg:"White", hex:{u:"#fbfbfb",s:"#ece7de",a:"#c9c3b8"}, stock:[6,12,18,16,9,4], pop:82, added:"2026-05-01" },
+  { id:"NS-HARB-W-BLK", fam:"NS-HARB-W", colour:"Black", cg:"Black", hex:{u:"#1e1e20",s:"#f5f2ea",a:"#f5f2ea"}, stock:[4,9,12,12,7,3], pop:68, added:"2026-05-01" },
+  { id:"NS-CAMD-W-GRY", fam:"NS-CAMD-W", colour:"Marl Grey", cg:"Grey", hex:{u:"#8f939a",s:"#ffffff",a:"#c4c7cc"}, stock:[2,5,7,6,4,1], pop:64, added:"2026-07-20", sale:29.99 },
+  { id:"NS-RIDGE-M-BLK", fam:"NS-RIDGE-M", colour:"Black", cg:"Black", hex:{u:"#1c1b1b",s:"#2b2b2b",a:"#454545"}, stock:[3,8,12,14,11,6,2], pop:86, added:"2026-09-15" },
+  { id:"NS-RIDGE-M-BRN", fam:"NS-RIDGE-M", colour:"Chestnut Brown", cg:"Brown", hex:{u:"#6b3f22",s:"#2b2018",a:"#3b2a1d"}, stock:[2,6,9,10,8,4,1], pop:79, added:"2026-09-15" },
+  { id:"NS-FELL-M-TAN", fam:"NS-FELL-M", colour:"Tan", cg:"Brown", hex:{u:"#a66a3a",s:"#2c2a28",a:"#e3b33c"}, stock:[2,4,7,8,6,3,0], pop:69, added:"2026-08-30" },
+  { id:"NS-RIDGE-W-BLK", fam:"NS-RIDGE-W", colour:"Black", cg:"Black", hex:{u:"#1c1b1b",s:"#2b2b2b",a:"#454545"}, stock:[4,9,13,12,6,2], pop:83, added:"2026-09-15" },
+  { id:"NS-RIDGE-W-TPE", fam:"NS-RIDGE-W", colour:"Taupe", cg:"Brown", hex:{u:"#8b7d70",s:"#2b2622",a:"#6b5f55"}, stock:[2,6,8,7,4,1], pop:71, added:"2026-09-15" },
+  { id:"NS-THORN-W-BLK", fam:"NS-THORN-W", colour:"Black", cg:"Black", hex:{u:"#222224",s:"#2e2e2e",a:"#55585e"}, stock:[0,0,0,0,0,0], pop:58, added:"2026-08-01" }
+];
+const CATS = { trainers:"Trainers & Sneakers", running:"Running Shoes", casual:"Casual Shoes", boots:"Boots" };
+const CAT_TYPE = { trainers:"Trainers", running:"Running Shoes", casual:"Slip-Ons", boots:"Boots" };
+const GENDER_LABEL = { male:"Men's", female:"Women's", unisex:"Unisex" };
+
+// Build the product list (merging family + colourway data)
+const PRODUCTS = COLOURWAYS.map(c => {
+  const f = FAMILY[c.fam];
+  return {
+    id: c.id, group: c.fam, sku: c.id, brand: CONFIG.brand, name: f.name, colour: c.colour, colourGroup: c.cg, hex: c.hex,
+    gender: f.gender, cat: f.cat, shape: f.shape, sizes: f.sizes, baseStock: c.stock,
+    price: f.price, sale: c.sale || null, cost: f.cost, pop: c.pop, added: c.added,
+    desc: f.desc, bullets: f.bullets, materials: f.materials, care: f.care,
+    condition: "new", ageGroup: "adult",
+    gtin: "",            // Fictional products have no GS1 barcode. Never invent one.
+    mpn: "",             // No manufacturer part number assigned (internal SKU is used as the ID).
+    identifierExists: false,
+    productType: `Footwear > ${GENDER_LABEL[f.gender]} > ${CAT_TYPE[f.cat]}`,
+    title: `${CONFIG.brand} ${GENDER_LABEL[f.gender]} ${f.name} – ${c.colour}`
+  };
+});
+const byId = Object.fromEntries(PRODUCTS.map(p => [p.id, p]));
+
+/* =============================================================================
+   3. UTILITIES & STORAGE
+============================================================================= */
+const $ = (s, el=document) => el.querySelector(s);
+const $$ = (s, el=document) => [...el.querySelectorAll(s)];
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const round2 = n => Math.round((n + Number.EPSILON) * 100) / 100;
+const money = n => "£" + round2(n).toFixed(2);
+const pad2 = n => String(n).padStart(2, "0");
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+  del(k) { try { localStorage.removeItem(k); } catch {} }
+};
+const isPlaceholder = v => !v || /X{4,}|YOUR-|\[|example\.com/i.test(v);
+function baseUrl() {
+  let u = store.get("ns_base_url", "") || CONFIG.siteUrl;
+  if (!u.endsWith("/")) u += "/";
+  return u;
+}
+function toast(msg) { const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove("show"), 2600); }
+
+/* Inventory: base stock minus units sold through simulated orders (stored locally) */
+function soldMap() { return store.get("ns_sold", {}); }
+function variants(p) {
+  const sold = soldMap();
+  return p.sizes.map((s, i) => {
+    const vid = `${p.id}-${pad2(s)}`;
+    return { vid, size: s, stock: Math.max(0, (p.baseStock[i] || 0) - (sold[vid] || 0)) };
+  });
+}
+function variantById(vid) {
+  const m = vid.match(/^(.*)-(\d{2})$/); if (!m) return null;
+  const p = byId[m[1]]; if (!p) return null;
+  const v = variants(p).find(v => v.vid === vid); return v ? { p, v } : null;
+}
+const totalStock = p => variants(p).reduce((a, v) => a + v.stock, 0);
+const unitPrice = p => p.sale ?? p.price;
+const isNew = p => (Date.now() - new Date(p.added).getTime()) / 864e5 <= CONFIG.newInDays;
+
+/* =============================================================================
+   4. PRODUCT IMAGES — original vector illustrations generated from product data
+      (exportable as PNG for Merchant Center in ?page=admin)
+============================================================================= */
+function shade(hex, amt) {
+  let c = hex.replace("#", ""); if (c.length === 3) c = c.split("").map(x => x + x).join("");
+  const n = parseInt(c, 16); let r = (n >> 16) + amt, g = ((n >> 8) & 255) + amt, b = (n & 255) + amt;
+  r = Math.max(0, Math.min(255, r)); g = Math.max(0, Math.min(255, g)); b = Math.max(0, Math.min(255, b));
+  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+function lum(hex) { const n = parseInt(hex.slice(1), 16); return (0.299 * (n >> 16) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) / 255; }
+function shoeSVG(p, view = 0, opts = {}) {
+  const { u, s, a } = p.hex, dark = lum(u) < 0.45;
+  const lace = dark ? "#e9e9ec" : "#33353a", line = shade(u, dark ? 40 : -45), sd = shade(s, -38);
+  const bg = opts.bg ?? "#f4f5f7";
+  let g = "";
+  const laces = (pts) => pts.map(([x1, y1, x2, y2]) => `<path d="M${x1} ${y1} L${x2} ${y2}" stroke="${lace}" stroke-width="5" stroke-linecap="round"/>`).join("");
+  switch (p.shape) {
+    case "trainer": case "platform": {
+      const lift = p.shape === "platform" ? 22 : 0;
+      g += `<path d="M36 ${222 - lift} L376 ${222 - lift} L376 236 Q376 254 354 254 L58 254 Q36 254 36 236 Z" fill="${s}"/>`;
+      g += `<path d="M36 238 L376 238" stroke="${sd}" stroke-width="2.5"/>`;
+      if (lift) g += `<path d="M36 ${222 - lift + 8} L376 ${222 - lift + 8}" stroke="${sd}" stroke-width="1.5" opacity=".6"/>`;
+      g += `<g transform="translate(0 ${-lift})"><path d="M46 222 L46 168 Q48 148 72 144 L148 134 Q172 112 204 106 L236 104 Q258 106 264 124 L300 164 Q352 178 366 202 Q372 214 368 222 Z" fill="${u}" stroke="${line}" stroke-width="2"/>`;
+      g += `<path d="M300 164 Q352 178 366 202 Q372 214 368 222 L322 222 Q320 190 300 164 Z" fill="${shade(u, dark ? 14 : -10)}"/>`;
+      g += `<path d="M46 168 Q48 148 72 144 L82 143 L88 222 L46 222 Z" fill="${a}"/>`;
+      g += `<path d="M112 206 Q205 186 296 198" stroke="${a}" stroke-width="9" fill="none" stroke-linecap="round"/>`;
+      g += `<path d="M148 134 Q172 112 204 106 L236 104 Q258 106 264 124" fill="none" stroke="${line}" stroke-width="4"/>`;
+      g += laces([[206,124,222,116],[222,134,238,126],[238,145,254,137],[254,157,270,149],[270,170,286,162]]) + `</g>`;
+      break; }
+    case "runner": {
+      g += `<path d="M34 236 L372 236 Q376 254 352 256 L58 256 Q34 256 34 240 Z" fill="${sd}"/>`;
+      g += `<path d="M38 212 L374 206 Q380 222 372 236 L34 236 Q30 222 38 212 Z" fill="${s}"/>`;
+      g += `<path d="M60 226 Q130 214 200 224 T350 218" stroke="${a}" stroke-width="5" fill="none"/>`;
+      g += `<path d="M50 212 L50 172 Q54 152 80 150 L150 142 Q176 120 206 116 L236 116 Q256 118 262 132 L304 168 Q356 180 372 206 Z" fill="${u}" stroke="${line}" stroke-width="2"/>`;
+      let dots = ""; for (let x = 110; x < 300; x += 14) for (let y = 160; y < 205; y += 12) if (y > 150 + (x - 100) * 0.05) dots += `<circle cx="${x + (y % 24 ? 7 : 0)}" cy="${y}" r="2" fill="${line}" opacity=".45"/>`;
+      g += dots;
+      g += `<path d="M50 172 Q54 152 80 150 L92 150 L98 212 L50 212 Z" fill="${a}"/>`;
+      g += `<path d="M120 200 L190 160 L210 200" stroke="${a}" stroke-width="7" fill="none" stroke-linejoin="round" stroke-linecap="round"/>`;
+      g += `<path d="M150 142 Q176 120 206 116 L236 116 Q256 118 262 132" fill="none" stroke="${line}" stroke-width="4"/>`;
+      g += laces([[210,132,226,125],[226,142,242,135],[242,152,258,145],[258,163,274,156]]);
+      break; }
+    case "slipon": {
+      g += `<path d="M38 222 L374 222 L374 234 Q374 248 356 248 L56 248 Q38 248 38 234 Z" fill="${s}"/>`;
+      g += `<path d="M38 230 L374 230" stroke="${sd}" stroke-width="2"/>`;
+      g += `<path d="M48 222 L48 184 Q50 168 72 166 L168 160 Q220 152 262 160 L312 176 Q358 190 370 210 Q374 218 370 222 Z" fill="${u}" stroke="${line}" stroke-width="2"/>`;
+      g += `<path d="M168 160 Q220 152 262 160" fill="none" stroke="${line}" stroke-width="5"/>`;
+      g += `<path d="M196 160 L226 157 L230 196 L200 198 Z" fill="${shade(u, dark ? 22 : -22)}"/>`;
+      for (let i = 0; i < 4; i++) g += `<path d="M${200 + i * 7} 160 L${203 + i * 7} 197" stroke="${line}" stroke-width="1.5" opacity=".7"/>`;
+      g += `<path d="M48 214 L370 214" stroke="${a}" stroke-width="4" opacity=".9"/>`;
+      break; }
+    case "chelsea": {
+      g += `<path d="M58 222 L372 222 L372 238 Q372 252 354 252 L120 252 L120 258 L62 258 Q56 258 56 250 Z" fill="${s}"/>`;
+      g += `<path d="M70 222 L70 72 Q72 60 86 60 L176 60 Q186 60 186 74 L190 148 Q252 160 312 178 Q362 194 370 214 L370 222 Z" fill="${u}" stroke="${line}" stroke-width="2"/>`;
+      g += `<path d="M148 64 L184 64 L188 148 L152 140 Q140 100 148 64 Z" fill="${shade(a, dark ? 10 : -10)}"/>`;
+      for (let i = 0; i < 5; i++) g += `<path d="M${154 + i * 7} 68 L${156 + i * 7} 142" stroke="${shade(a, 30)}" stroke-width="1.5" opacity=".6"/>`;
+      g += `<path d="M70 70 Q62 44 84 44 L94 44 Q100 46 98 60" fill="none" stroke="${shade(u, dark ? 50 : -50)}" stroke-width="6"/>`;
+      g += `<path d="M70 210 L370 214" stroke="${line}" stroke-width="2" stroke-dasharray="6 5" opacity=".7"/>`;
+      break; }
+    case "hiker": {
+      g += `<path d="M40 222 L374 222 L374 240 L360 252 L346 242 L332 252 L318 242 L304 252 L290 242 L276 252 L262 242 L248 252 L234 242 L220 252 L206 242 L192 252 L178 242 L164 252 L150 242 L136 252 L122 242 L108 252 L94 242 L80 252 L66 242 L52 252 L40 240 Z" fill="${s}"/>`;
+      g += `<path d="M48 222 L50 100 Q52 86 70 84 L170 82 Q186 84 188 100 L196 140 Q252 156 310 174 Q362 190 370 212 L370 222 Z" fill="${u}" stroke="${line}" stroke-width="2"/>`;
+      g += `<path d="M50 100 Q52 80 72 80 L170 78 Q190 80 188 100 L184 104 L54 106 Z" fill="${shade(u, dark ? 30 : -30)}"/>`;
+      g += `<path d="M48 190 L370 200 L370 222 L48 222 Z" fill="${shade(u, dark ? 16 : -18)}"/>`;
+      g += laces([[158,106,186,104],[164,124,192,122],[172,142,204,146],[196,158,224,152],[220,166,248,160]]);
+      for (const [x, y] of [[188,104],[194,122],[204,146]]) g += `<circle cx="${x}" cy="${y}" r="4" fill="none" stroke="${a}" stroke-width="2.5"/>`;
+      g += `<path d="M48 160 L120 156" stroke="${a}" stroke-width="5" stroke-linecap="round"/>`;
+      break; }
+  }
+  const flip = view === 1 ? `transform="translate(400 0) scale(-1 1)"` : "";
+  const label = opts.label === false ? "" : `<title>${esc(p.title)}${view ? " – alternate view" : ""}</title>`;
+  return `<svg class="shoe" viewBox="0 -45 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(p.title)}">${label}`
+    + (bg ? `<rect x="0" y="-45" width="400" height="400" fill="${bg}"/>` : "")
+    + `<ellipse cx="206" cy="262" rx="176" ry="12" fill="#000" opacity=".1"/>`
+    + `<g ${flip}>${g}</g></svg>`;
+}
+
+/* =============================================================================
+   5. CART
+============================================================================= */
+const cart = {
+  items() { return store.get("ns_cart", []).filter(i => variantById(i.vid)); },
+  save(items) { store.set("ns_cart", items); updateCartBadge(); },
+  add(vid, qty) {
+    const items = this.items(), found = items.find(i => i.vid === vid), ref = variantById(vid);
+    const max = Math.min(ref.v.stock, 10), current = found ? found.qty : 0;
+    const allowed = Math.max(0, Math.min(qty, max - current));
+    if (allowed <= 0) return 0;
+    if (found) found.qty += allowed; else items.push({ vid, qty: allowed });
+    this.save(items); return allowed;
+  },
+  setQty(vid, qty) {
+    const items = this.items(), it = items.find(i => i.vid === vid); if (!it) return;
+    const ref = variantById(vid); it.qty = Math.max(1, Math.min(qty, ref.v.stock, 10)); this.save(items);
+  },
+  remove(vid) { this.save(this.items().filter(i => i.vid !== vid)); },
+  clear() { this.save([]); },
+  count() { return this.items().reduce((a, i) => a + i.qty, 0); },
+  coupon() { return store.get("ns_coupon", ""); }
+};
+function updateCartBadge() { const n = cart.count(), b = $("#cartCount"); b.textContent = n; b.hidden = n === 0; $("#cartLink").setAttribute("aria-label", `Basket, ${n} item${n === 1 ? "" : "s"}`); }
+
+function zoneFor(postcode) {
+  const pc = normPostcode(postcode); if (!pc) return null;
+  const out = pc.split(" ")[0], area = out.match(/^[A-Z]{1,2}/)[0], dist = parseInt(out.slice(area.length), 10);
+  if (CONFIG.zones.unsupported.areas.includes(area)) return "unsupported";
+  if (CONFIG.zones.ni.areas.includes(area)) return "ni";
+  if (CONFIG.zones.highlands.districts.some(([a, f, t]) => a === area && dist >= f && dist <= t)) return "highlands";
+  return "mainland";
+}
+const PC_RE = /^(GIR ?0AA|[A-PR-UWYZ]([0-9]{1,2}|[A-HK-Y][0-9]{1,2}|[0-9][A-HJKS-UW]|[A-HK-Y][0-9][ABEHMNPRV-Y]) ?[0-9][ABD-HJLNP-UW-Z]{2})$/i;
+function normPostcode(v) { const s = String(v || "").toUpperCase().replace(/\s+/g, ""); if (!PC_RE.test(s)) return null; return s.slice(0, -3) + " " + s.slice(-3); }
+
+/* Order maths – one function so cart, checkout, confirmation and analytics always agree */
+function calcTotals(items, couponCode, zone = "mainland", methodId = "standard") {
+  const lines = items.map(i => { const r = variantById(i.vid); return { ...i, p: r.p, v: r.v, unit: unitPrice(r.p), line: round2(unitPrice(r.p) * i.qty) }; });
+  const subtotal = round2(lines.reduce((a, l) => a + l.line, 0));
+  const code = (couponCode || "").toUpperCase(), d = CONFIG.discounts[code];
+  let discount = 0, couponMsg = "", couponValid = false, freeShip = false;
+  if (code) {
+    if (!d) couponMsg = "That code isn't recognised.";
+    else if (d.type === "percent") {
+      const base = lines.filter(l => !d.fullPriceOnly || !l.p.sale).reduce((a, l) => a + l.line, 0);
+      if (base <= 0) couponMsg = "This code only applies to full-price items."; else { discount = round2(base * d.value / 100); couponValid = true; }
+    } else if (d.type === "fixed") {
+      if (subtotal < d.minSubtotal) couponMsg = `Spend ${money(d.minSubtotal)} or more to use this code.`; else { discount = Math.min(d.value, subtotal); couponValid = true; }
+    } else if (d.type === "freeship") { freeShip = true; couponValid = true; }
+  }
+  const opts = CONFIG.delivery[zone] || [];
+  const m = opts.find(o => o.id === methodId) || opts[0];
+  let shipping = 0;
+  if (m) { shipping = m.price; if ((m.freeOver && subtotal - discount >= m.freeOver) || (freeShip && m.id === "standard")) shipping = 0; }
+  if (!lines.length) shipping = 0;
+  const total = round2(subtotal - discount + shipping);
+  const tax = round2(total - total / (1 + CONFIG.vatRate));   // VAT included in prices
+  return { lines, subtotal, discount, shipping, total, tax, code: couponValid ? code : "", couponMsg, method: m, zone };
+}
+
+/* =============================================================================
+   6. ANALYTICS — Consent Mode v2 + GTM / GA4 dataLayer e-commerce events
+============================================================================= */
+window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+const EVENT_LOG = [];
+const TRACKING_MODE = !isPlaceholder(CONFIG.gtmContainerId) ? "gtm" : (!isPlaceholder(CONFIG.ga4MeasurementId) ? "gtag" : "none");
+(function initTags() {
+  gtag("consent", "default", { ad_storage:"denied", analytics_storage:"denied", ad_user_data:"denied", ad_personalization:"denied", wait_for_update:500 });
+  gtag("set", "ads_data_redaction", true);
+  const saved = store.get("ns_consent", null);
+  if (saved) applyConsent(saved, false);
+  if (TRACKING_MODE === "gtm") {
+    dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+    const s = document.createElement("script"); s.async = true; s.src = "https://www.googletagmanager.com/gtm.js?id=" + encodeURIComponent(CONFIG.gtmContainerId); document.head.appendChild(s);
+  } else if (TRACKING_MODE === "gtag") {
+    const s = document.createElement("script"); s.async = true; s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(CONFIG.ga4MeasurementId); document.head.appendChild(s);
+    gtag("js", new Date()); gtag("config", CONFIG.ga4MeasurementId, { debug_mode: CONFIG.testMode, send_page_view: false });
+  }
+})();
+function applyConsent(c, push = true) {
+  gtag("consent", "update", {
+    analytics_storage: c.analytics ? "granted" : "denied",
+    ad_storage: c.ads ? "granted" : "denied", ad_user_data: c.ads ? "granted" : "denied", ad_personalization: c.ads ? "granted" : "denied"
+  });
+  if (push) dataLayer.push({ event: "consent_update", consent_analytics: !!c.analytics, consent_ads: !!c.ads });
+}
+function gaItem(p, opts = {}) {
+  const it = { item_id: opts.vid || p.id, item_name: p.name, item_brand: p.brand, item_category: GENDER_LABEL[p.gender], item_category2: CATS[p.cat],
+    item_variant: opts.size ? `${p.colour} / UK ${opts.size}` : p.colour, item_group_id: p.group, price: unitPrice(p), quantity: opts.qty || 1 };
+  if (opts.list) { it.item_list_name = opts.list; it.index = opts.index ?? 0; }
+  if (p.sale) it.discount = round2(p.price - p.sale);
+  return it;
+}
+function track(event, ecommerce, extra = {}) {
+  const params = { ...extra }; if (CONFIG.testMode) params.debug_mode = true;
+  dataLayer.push({ ecommerce: null });
+  const payload = { event, ...params }; if (ecommerce) payload.ecommerce = ecommerce;
+  dataLayer.push(payload);
+  if (TRACKING_MODE === "gtag") gtag("event", event, { ...(ecommerce || {}), ...params });
+  EVENT_LOG.push({ time: new Date().toLocaleTimeString("en-GB"), event, mode: TRACKING_MODE, payload: { ...params, ...(ecommerce ? { ecommerce } : {}) } });
+}
+function pageView(title) { track("page_view_virtual", null, { page_title: title, page_location: location.href }); if (TRACKING_MODE === "gtag") gtag("event", "page_view", { page_title: title, page_location: location.href }); }
+
+/* =============================================================================
+   7. ROUTER (query-string URLs so every product has a unique, crawlable URL)
+============================================================================= */
+const app = $("#app");
+function go(href, replace = false) { history[replace ? "replaceState" : "pushState"]({}, "", href); render(); window.scrollTo(0, 0); app.focus({ preventScroll: true }); }
+document.addEventListener("click", e => {
+  const a = e.target.closest("a"); if (!a || a.target === "_blank" || e.metaKey || e.ctrlKey || e.shiftKey) return;
+  const h = a.getAttribute("href"); if (!h || !(h.startsWith("?") || h === "./")) return;
+  e.preventDefault();
+  const card = a.closest("[data-select]"); if (card) { const p = byId[card.dataset.select]; track("select_item", { item_list_name: card.dataset.list, items: [gaItem(p, { list: card.dataset.list, index: +card.dataset.index })] }); }
+  $("#mainNav").classList.remove("open"); $("#menuToggle").setAttribute("aria-expanded", "false");
+  go(h === "./" ? location.pathname : h);
+});
+window.addEventListener("popstate", render);
+function setMeta(title, desc, canonicalQuery = "") {
+  document.title = title ? `${title} | ${CONFIG.storeName}` : `${CONFIG.storeName} | ${CONFIG.tagline}`;
+  $('meta[name="description"]').setAttribute("content", desc || "NorthStep Footwear – affordable, stylish everyday footwear for the UK.");
+  $("#canonical").href = baseUrl() + canonicalQuery;
+  let r = $('meta[name="robots"]'); if (!r) { r = document.createElement("meta"); r.name = "robots"; document.head.appendChild(r); }
+  r.content = /admin|dashboard|cart|checkout|order|account|guide/.test(canonicalQuery) ? "noindex" : "index,follow";
+}
+function setJsonLd(obj) { $$("script[data-ld]").forEach(s => s.remove()); if (!obj) return; [].concat(obj).forEach(o => { const s = document.createElement("script"); s.type = "application/ld+json"; s.dataset.ld = "1"; s.textContent = JSON.stringify(o); document.head.appendChild(s); }); }
+function crumbs(list) {
+  return `<nav class="crumbs" aria-label="Breadcrumb"><ol>${list.map((c, i) => i === list.length - 1 ? `<li aria-current="page">${esc(c[0])}</li>` : `<li><a href="${c[1]}">${esc(c[0])}</a></li>`).join("")}</ol></nav>`;
+}
+function navCurrent() { const s = location.search; $$("#mainNav a").forEach(a => { const h = a.getAttribute("href"); a.toggleAttribute("aria-current", s && s === h); if (s === h) a.setAttribute("aria-current", "page"); }); }
+
+function render() {
+  const q = new URLSearchParams(location.search);
+  setJsonLd(null); navCurrent();
+  const page = q.get("p") ? "product" : (q.get("page") || "home");
+  const routes = { home: renderHome, shop: renderShop, product: renderProduct, cart: renderCart, checkout: renderCheckout, order: renderOrder,
+    account: renderAccount, admin: renderAdmin, dashboard: renderDashboard, guide: renderGuide, contact: renderContact, sizeguide: renderSizeGuide,
+    delivery: () => renderPolicy("delivery"), returns: () => renderPolicy("returns"), privacy: () => renderPolicy("privacy"), cookies: () => renderPolicy("cookies"), terms: () => renderPolicy("terms") };
+  (routes[page] || renderNotFound)(q);
+}
+
+/* =============================================================================
+   8. SHARED UI
+============================================================================= */
+function priceHTML(p) { return p.sale ? `<span class="price"><span class="now">${money(p.sale)}</span><s aria-label="was ${money(p.price)}">${money(p.price)}</s></span>` : `<span class="price">${money(p.price)}</span>`; }
+function cardHTML(p, list, index) {
+  const oos = totalStock(p) === 0;
+  const tag = oos ? `<span class="tag oos">Out of stock</span>` : p.sale ? `<span class="tag sale">Sale</span>` : isNew(p) ? `<span class="tag new">New</span>` : "";
+  return `<a class="card" href="?p=${p.id}" data-select="${p.id}" data-list="${esc(list)}" data-index="${index}">
+    <div class="img">${shoeSVG(p)}</div>${tag}
+    <div class="meta"><p class="t">${esc(p.name)}</p><div class="c">${GENDER_LABEL[p.gender]} · ${esc(p.colour)}</div>${priceHTML(p)}</div></a>`;
+}
+function gridHTML(list, name) { return `<div class="grid">${list.map((p, i) => cardHTML(p, name, i)).join("")}</div>`; }
+function trackList(list, name) { if (list.length) track("view_item_list", { item_list_name: name, items: list.slice(0, 24).map((p, i) => gaItem(p, { list: name, index: i })) }); }
+const ICON = {
+  truck:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>`,
+  ret:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9h11a5 5 0 0 1 0 10H8"/><path d="M8 5L4 9l4 4"/></svg>`,
+  lock:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>`,
+  foot:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17c4 0 5-6 9-6s5 2 9 2v4H3z"/><path d="M3 21h18"/></svg>`
+};
+
+/* =============================================================================
+   9. PAGES
+============================================================================= */
+function renderHome() {
+  setMeta("", "Shop NorthStep trainers, running shoes, slip-ons and boots for men and women. Free UK Standard delivery over £50 and 30-day returns.", "");
+  const best = [...PRODUCTS].filter(p => totalStock(p) > 0).sort((a, b) => b.pop - a.pop).slice(0, 8);
+  const newest = [...PRODUCTS].sort((a, b) => b.added.localeCompare(a.added)).slice(0, 4);
+  const tileP = { trainers: byId["NS-AERO-M-BLK"], running: byId["NS-STRIDE-M-BLU"], casual: byId["NS-HARB-M-NVY"], boots: byId["NS-RIDGE-M-BRN"] };
+  const hero = byId["NS-STRIDE-M-BLU"];
+  app.innerHTML = `
+  <section class="hero"><div class="wrap">
+    <div><p class="eyebrow">New season · Autumn/Winter</p><h1>Every Step,<br>Your Style.</h1>
+      <p class="lead">Comfortable, everyday footwear designed for real UK days – from the morning commute to the weekend run.</p>
+      <div class="ctas"><a class="btn" href="?page=shop&amp;g=men">Shop Men's Shoes</a><a class="btn alt" href="?page=shop&amp;g=women">Shop Women's Shoes</a></div>
+      <p class="small" style="color:#9aa3b2;margin-top:18px">Free Standard delivery over ${money(CONFIG.freeDeliveryThreshold)} · ${CONFIG.returnsDays}-day returns</p></div>
+    <div class="hero-art">${shoeSVG(hero, 0, { bg: "", label: false })}</div>
+  </div></section>
+  <section class="block"><div class="wrap"><div class="sec-head"><h2>Bestsellers</h2><a href="?page=shop&amp;sort=popular">Shop all</a></div>${gridHTML(best, "Homepage – Bestsellers")}</div></section>
+  <section class="block" style="padding-top:0"><div class="wrap"><div class="sec-head"><h2>Shop by category</h2></div>
+    <div class="tiles">${Object.entries(CATS).map(([k, v]) => `<a class="tile" href="?page=shop&amp;cat=${k}">${shoeSVG(tileP[k], 0, { label: false })}<span>${esc(v)}</span></a>`).join("")}</div></div></section>
+  <section class="block" style="padding-top:0"><div class="wrap"><div class="sec-head"><h2>New arrivals</h2><a href="?page=shop&amp;sort=newest">See what's new</a></div>${gridHTML(newest, "Homepage – New arrivals")}</div></section>
+  <section class="block" style="padding-top:0"><div class="wrap values">
+    <div class="value">${ICON.truck}<h3>UK delivery</h3><p class="small muted">Free Standard delivery to the UK mainland on orders over ${money(CONFIG.freeDeliveryThreshold)}. Next-day option available.</p></div>
+    <div class="value">${ICON.ret}<h3>${CONFIG.returnsDays}-day returns</h3><p class="small muted">Changed your mind? Return unworn items within ${CONFIG.returnsDays} days. See our returns policy.</p></div>
+    <div class="value">${ICON.foot}<h3>All-day comfort</h3><p class="small muted">Cushioned footbeds and flexible soles across the range, in UK sizes.</p></div>
+    <div class="value">${ICON.lock}<h3>Secure checkout</h3><p class="small muted">Payments are handled by a secure payment provider (demo mode: no payment taken).</p></div>
+  </div></section>
+  <section class="block" style="padding-top:0"><div class="wrap"><div class="news">
+    <div><h2>Join the NorthStep list</h2><p class="muted" style="margin:0">New drops, restocks and offers – straight to your inbox. Unsubscribe any time.</p></div>
+    <form id="newsForm" novalidate><div style="flex:1;min-width:200px"><label for="newsEmail" class="sr-only">Email address</label>
+      <input id="newsEmail" type="email" placeholder="Your email address" autocomplete="email" required></div>
+      <button class="btn">Sign up</button>
+      <p class="xs muted" id="newsMsg" role="status" style="width:100%;margin:0">By signing up you agree to our <a href="?page=privacy">privacy policy</a>.</p></form>
+  </div></div></section>`;
+  trackList(best, "Homepage – Bestsellers");
+  $("#newsForm").addEventListener("submit", e => {
+    e.preventDefault(); const v = $("#newsEmail").value.trim(), m = $("#newsMsg");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { m.innerHTML = `<span style="color:var(--err);font-weight:600">Please enter a valid email address.</span>`; $("#newsEmail").setAttribute("aria-invalid", "true"); return; }
+    $("#newsEmail").removeAttribute("aria-invalid");
+    track("generate_lead", null, { lead_source: "newsletter_footer", currency: "GBP", value: 0 });
+    m.innerHTML = `<span style="color:var(--ok);font-weight:600">Thanks! (Demo: your email was not stored or sent anywhere. Connect Klaviyo or your ESP to collect real sign-ups.)</span>`; e.target.reset();
+  });
+  pageView("Home");
+}
+
+/* ---------- Shop / category ---------- */
+const shopState = { sizes: new Set(), price: new Set(), colours: new Set(), genders: new Set(), cats: new Set(), inStock: false, key: "" };
+function renderShop(q) {
+  const cat = q.get("cat"), g = q.get("g"), term = (q.get("q") || "").trim(), sale = q.get("sale") === "1";
+  const key = location.search; if (shopState.key !== key.replace(/&?sort=[^&]*/, "")) { Object.assign(shopState, { sizes: new Set(), price: new Set(), colours: new Set(), genders: new Set(), cats: new Set(), inStock: false }); shopState.key = key.replace(/&?sort=[^&]*/, ""); }
+  let base = PRODUCTS.filter(p =>
+    (!cat || p.cat === cat) &&
+    (!g || (g === "men" ? ["male", "unisex"] : ["female", "unisex"]).includes(p.gender)) &&
+    (!sale || p.sale) &&
+    (!term || `${p.title} ${p.colour} ${CATS[p.cat]} ${p.desc}`.toLowerCase().includes(term.toLowerCase())));
+  let title = "All footwear";
+  if (g) title = g === "men" ? "Men's footwear" : "Women's footwear";
+  if (cat) title = (g ? (g === "men" ? "Men's " : "Women's ") : "") + CATS[cat];
+  if (sale) title = "Sale";
+  if (term) title = `Search results for “${term}”`;
+  setMeta(title, `Shop ${title.toLowerCase()} at NorthStep Footwear. UK sizes, free Standard delivery over £50.`, location.search);
+  const allSizes = [...new Set(base.flatMap(p => p.sizes))].sort((a, b) => a - b);
+  const colours = [...new Set(base.map(p => p.colourGroup))].sort();
+  const sort = q.get("sort") || "popular";
+  const cb = (name, val, label, set) => `<label class="chk"><input type="checkbox" data-f="${name}" value="${esc(val)}" ${set.has(String(val)) ? "checked" : ""}> ${esc(label)}</label>`;
+  app.innerHTML = `<div class="wrap">${crumbs([["Home", "./"], ["Shop", "?page=shop"], ...(title !== "All footwear" ? [[title, location.search]] : [])])}
+    <h1>${esc(title)}</h1>
+    <div class="shop">
+      <aside class="filters" id="filters" aria-label="Product filters">
+        <details open><summary>Size (UK)</summary><div class="opts">${allSizes.map(s => `<button class="sizechip" data-size="${s}" aria-pressed="${shopState.sizes.has(String(s))}">${s}</button>`).join("")}</div></details>
+        <details open><summary>Price</summary><div class="opts">${cb("price", "0-40", "Under £40", shopState.price)}${cb("price", "40-60", "£40 – £60", shopState.price)}${cb("price", "60-999", "£60 and over", shopState.price)}</div></details>
+        <details open><summary>Colour</summary><div class="opts">${colours.map(c => cb("colours", c, c, shopState.colours)).join("")}</div></details>
+        ${g ? "" : `<details><summary>Gender</summary><div class="opts">${cb("genders", "male", "Men's", shopState.genders)}${cb("genders", "female", "Women's", shopState.genders)}${cb("genders", "unisex", "Unisex", shopState.genders)}</div></details>`}
+        ${cat ? "" : `<details><summary>Category</summary><div class="opts">${Object.entries(CATS).map(([k, v]) => cb("cats", k, v, shopState.cats)).join("")}</div></details>`}
+        <details open><summary>Availability</summary><div class="opts"><label class="chk"><input type="checkbox" id="fStock" ${shopState.inStock ? "checked" : ""}> In stock only</label></div></details>
+        <button class="link small" id="fClear" style="margin-top:12px">Clear all filters</button>
+      </aside>
+      <div><div class="toolbar"><span class="muted small" id="count" aria-live="polite"></span>
+        <div style="display:flex;gap:10px;align-items:center"><button class="btn sm alt mob-filters" id="fToggle" aria-expanded="false" aria-controls="filters">Filters</button>
+        <label for="sort" class="sr-only">Sort by</label><select id="sort">
+          <option value="popular">Most popular</option><option value="newest">Newest arrivals</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option></select></div></div>
+        <div id="results"></div></div>
+    </div></div>`;
+  $("#sort").value = sort;
+  const apply = (fireEvent = false) => {
+    const sel = shopState;
+    let list = base.filter(p => {
+      const vs = variants(p), price = unitPrice(p);
+      if (sel.sizes.size && !vs.some(v => sel.sizes.has(String(v.size)) && v.stock > 0)) return false;
+      if (sel.price.size && ![...sel.price].some(r => { const [lo, hi] = r.split("-").map(Number); return price >= lo && price < hi; })) return false;
+      if (sel.colours.size && !sel.colours.has(p.colourGroup)) return false;
+      if (sel.genders.size && !sel.genders.has(p.gender)) return false;
+      if (sel.cats.size && !sel.cats.has(p.cat)) return false;
+      if (sel.inStock && totalStock(p) === 0) return false;
+      return true;
+    });
+    const s = $("#sort").value;
+    list.sort(s === "newest" ? (a, b) => b.added.localeCompare(a.added) : s === "price-asc" ? (a, b) => unitPrice(a) - unitPrice(b) : s === "price-desc" ? (a, b) => unitPrice(b) - unitPrice(a) : (a, b) => b.pop - a.pop);
+    // Out-of-stock products sink to the end (still visible for SEO/feeds)
+    list.sort((a, b) => (totalStock(a) === 0) - (totalStock(b) === 0));
+    $("#count").textContent = `${list.length} product${list.length === 1 ? "" : "s"}`;
+    $("#results").innerHTML = list.length ? gridHTML(list, title) : `<div class="empty"><h3>No products match those filters</h3><p class="muted">Try removing a filter or browsing all footwear.</p><button class="btn sm" id="emptyClear">Clear filters</button></div>`;
+    $("#emptyClear")?.addEventListener("click", clear);
+    if (fireEvent) trackList(list, title);
+  };
+  const clear = () => { Object.assign(shopState, { sizes: new Set(), price: new Set(), colours: new Set(), genders: new Set(), cats: new Set(), inStock: false }); renderShop(new URLSearchParams(location.search)); };
+  $("#filters").addEventListener("change", e => { const f = e.target.dataset.f; if (f) { e.target.checked ? shopState[f].add(e.target.value) : shopState[f].delete(e.target.value); } if (e.target.id === "fStock") shopState.inStock = e.target.checked; apply(); });
+  $("#filters").addEventListener("click", e => { const b = e.target.closest("[data-size]"); if (!b) return; const s = b.dataset.size; shopState.sizes.has(s) ? shopState.sizes.delete(s) : shopState.sizes.add(s); b.setAttribute("aria-pressed", shopState.sizes.has(s)); apply(); });
+  $("#fClear").addEventListener("click", clear);
+  $("#sort").addEventListener("change", () => { const u = new URLSearchParams(location.search); u.set("sort", $("#sort").value); history.replaceState({}, "", "?" + u.toString()); apply(); });
+  $("#fToggle").addEventListener("click", e => { const f = $("#filters"); f.classList.toggle("open"); e.currentTarget.setAttribute("aria-expanded", f.classList.contains("open")); });
+  apply(true);
+  if (term) track("search", null, { search_term: term });
+  pageView(title);
+}
+
+/* ---------- Product detail ---------- */
+function renderProduct(q) {
+  const p = byId[q.get("p")]; if (!p) return renderNotFound();
+  const vs = variants(p), allOut = vs.every(v => v.stock === 0);
+  let selSize = q.get("size") ? parseInt(q.get("size"), 10) : null;
+  if (selSize && !vs.find(v => v.size === selSize)) selSize = null;
+  const siblings = PRODUCTS.filter(x => x.group === p.group);
+  const related = PRODUCTS.filter(x => x.cat === p.cat && x.group !== p.group && totalStock(x) > 0).sort((a, b) => b.pop - a.pop).slice(0, 4);
+  setMeta(`${GENDER_LABEL[p.gender]} ${p.name} – ${p.colour}`, `${p.desc.slice(0, 150)}`, `?p=${p.id}`);
+  const catUrl = `?page=shop&cat=${p.cat}`;
+  app.innerHTML = `<div class="wrap">${crumbs([["Home", "./"], [CATS[p.cat], catUrl], [`${p.name} – ${p.colour}`, ""]])}
+  <div class="pdp">
+    <div class="gallery"><div class="main" id="mainImg">${shoeSVG(p, 0)}</div>
+      <div class="thumbs" role="group" aria-label="Product images"><button aria-pressed="true" data-view="0" aria-label="View 1">${shoeSVG(p, 0, { label: false })}</button><button aria-pressed="false" data-view="1" aria-label="View 2">${shoeSVG(p, 1, { label: false })}</button></div>
+      <p class="xs muted" style="margin-top:8px">Illustrative product artwork for this demo store.</p></div>
+    <div class="buy">
+      <div class="sku" id="sku">SKU: ${p.sku}</div>
+      <h1 style="margin:6px 0 4px">${esc(p.name)}</h1>
+      <div class="muted">${GENDER_LABEL[p.gender]} · ${esc(CATS[p.cat])}</div>
+      <div class="price">${priceHTML(p)}${p.sale ? ` <span class="pill e" style="vertical-align:middle">Save ${money(p.price - p.sale)}</span>` : ""}</div>
+      <div class="vat">Price includes VAT. ${unitPrice(p) >= CONFIG.freeDeliveryThreshold ? "Free Standard UK mainland delivery." : `Free Standard UK mainland delivery on orders over ${money(CONFIG.freeDeliveryThreshold)}.`}</div>
+      <div><b class="small">Colour:</b> <span class="small">${esc(p.colour)}</span></div>
+      <div class="swatches">${siblings.map(s => `<a class="swatch" href="?p=${s.id}" aria-current="${s.id === p.id}" aria-label="${esc(s.colour)}${totalStock(s) ? "" : " (out of stock)"}"><i style="background:${s.hex.u}"></i>${esc(s.colour)}</a>`).join("")}</div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><b class="small" id="sizeLabel">Select UK size</b><a class="small" href="?page=sizeguide">Size guide</a></div>
+      <div class="sizes" role="group" aria-labelledby="sizeLabel">${vs.map(v => `<button data-size="${v.size}" aria-pressed="${v.size === selSize}" ${v.stock === 0 ? "disabled" : ""} aria-label="UK ${v.size}${v.stock === 0 ? ", out of stock" : ""}">UK ${v.size}</button>`).join("")}</div>
+      <div class="stock" id="stockMsg" aria-live="polite"></div>
+      <div class="formerr" id="pdpErr" role="alert"></div>
+      <div class="qtyrow"><div><label for="qty" class="small">Quantity</label><div class="qty"><button type="button" id="qMinus" aria-label="Decrease quantity">−</button><input id="qty" type="number" min="1" max="10" value="1" inputmode="numeric"><button type="button" id="qPlus" aria-label="Increase quantity">+</button></div></div>
+        <button class="btn accent" style="flex:1" id="addBtn" ${allOut ? "disabled" : ""}>${allOut ? "Out of stock" : "Add to basket"}</button></div>
+      ${allOut ? `<div class="note warn">This product is currently out of stock in all sizes. (Demo: back-in-stock alerts would be connected to your email platform.)</div>` : ""}
+      <div class="perks"><div>${ICON.truck}<span>${CONFIG.delivery.mainland.map(d => `${d.name}: ${d.price ? money(d.price) : "Free"} (${d.eta})`).join(" · ")}</span></div><div>${ICON.ret}<span>Free returns within ${CONFIG.returnsDays} days – <a href="?page=returns">returns policy</a></span></div></div>
+      <div class="acc">
+        <details open><summary>Description</summary><p style="margin-top:10px">${esc(p.desc)}</p><ul>${p.bullets.map(b => `<li>${esc(b)}</li>`).join("")}</ul></details>
+        <details><summary>Materials &amp; care</summary><p style="margin-top:10px"><b>Materials:</b> ${esc(p.materials)}</p><p><b>Care:</b> ${esc(p.care)}</p></details>
+        <details><summary>Delivery &amp; returns</summary><div style="margin-top:10px" class="small">
+          <p><b>UK mainland:</b> ${CONFIG.delivery.mainland.map(d => `${d.name} ${money(d.price)} (${d.eta})${d.freeOver ? `, free over ${money(d.freeOver)}` : ""}`).join("; ")}.</p>
+          <p><b>Highlands &amp; Islands:</b> ${money(CONFIG.delivery.highlands[0].price)} (${CONFIG.delivery.highlands[0].eta}). <b>Northern Ireland:</b> ${money(CONFIG.delivery.ni[0].price)} (${CONFIG.delivery.ni[0].eta}).</p>
+          <p><b>Returns:</b> Return unworn items in original packaging within ${CONFIG.returnsDays} days for a refund. Your statutory rights are not affected. <a href="?page=delivery">Delivery</a> · <a href="?page=returns">Returns</a></p></div></details>
+        <details><summary>Product details</summary><table class="data" style="margin-top:10px"><tbody>
+          <tr><th>Product ID</th><td>${p.id}</td></tr><tr><th>Brand</th><td>${p.brand}</td></tr><tr><th>Category</th><td>${esc(p.productType)}</td></tr>
+          <tr><th>Colour</th><td>${esc(p.colour)}</td></tr><tr><th>UK sizes</th><td>${p.sizes[0]}–${p.sizes[p.sizes.length - 1]}</td></tr><tr><th>Condition</th><td>New</td></tr><tr><th>GTIN</th><td>Not assigned (fictional demo product)</td></tr></tbody></table></details>
+      </div>
+    </div>
+  </div>
+  ${related.length ? `<section class="block" style="padding-top:10px"><div class="sec-head"><h2>You may also like</h2></div>${gridHTML(related, "Related products")}</section>` : ""}
+  </div>`;
+
+  const refresh = () => {
+    const v = vs.find(x => x.size === selSize);
+    $$(".sizes button").forEach(b => b.setAttribute("aria-pressed", +b.dataset.size === selSize));
+    const msg = $("#stockMsg"), qty = $("#qty");
+    if (allOut) { msg.className = "stock none"; msg.textContent = "Out of stock"; }
+    else if (!v) { msg.className = "stock"; msg.textContent = `${vs.filter(x => x.stock > 0).length} of ${vs.length} sizes in stock`; }
+    else if (v.stock <= 3) { msg.className = "stock low"; msg.textContent = `Low stock – only ${v.stock} left in UK ${v.size}`; }
+    else { msg.className = "stock ok"; msg.textContent = `In stock in UK ${v.size}`; }
+    $("#sku").textContent = "SKU: " + (v ? v.vid : p.sku);
+    const max = v ? Math.min(10, v.stock) : 10; qty.max = max; if (+qty.value > max) qty.value = max;
+    setJsonLd(productLd(p, v));
+  };
+  $(".sizes").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b || b.disabled) return;
+    selSize = +b.dataset.size; $("#pdpErr").classList.remove("show");
+    const u = new URLSearchParams(location.search); u.set("size", selSize); history.replaceState({}, "", "?" + u.toString());
+    refresh();
+  });
+  $(".thumbs").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; $("#mainImg").innerHTML = shoeSVG(p, +b.dataset.view); $$(".thumbs button").forEach(x => x.setAttribute("aria-pressed", x === b)); });
+  const clampQty = d => { const el = $("#qty"); el.value = Math.max(1, Math.min(+el.max || 10, (parseInt(el.value, 10) || 1) + d)); };
+  $("#qMinus").onclick = () => clampQty(-1); $("#qPlus").onclick = () => clampQty(1); $("#qty").onchange = () => clampQty(0);
+  $("#addBtn").addEventListener("click", () => {
+    const err = $("#pdpErr");
+    if (!selSize) { err.textContent = "Please select a UK size before adding to your basket."; err.classList.add("show"); $(".sizes button:not(:disabled)")?.focus(); return; }
+    const v = vs.find(x => x.size === selSize);
+    if (!v || v.stock === 0) { err.textContent = "Sorry, that size is out of stock. Please choose another size."; err.classList.add("show"); return; }
+    const want = parseInt($("#qty").value, 10) || 1, added = cart.add(v.vid, want);
+    if (!added) { err.textContent = `You already have the maximum available quantity of UK ${v.size} in your basket.`; err.classList.add("show"); return; }
+    err.classList.remove("show");
+    track("add_to_cart", { currency: "GBP", value: round2(unitPrice(p) * added), items: [gaItem(p, { vid: v.vid, size: v.size, qty: added })] });
+    toast(`Added ${added} × ${p.name} (UK ${v.size}) to your basket${added < want ? " – limited by stock" : ""}`);
+  });
+  refresh();
+  track("view_item", { currency: "GBP", value: unitPrice(p), items: [gaItem(p, selSize ? { vid: `${p.id}-${pad2(selSize)}`, size: selSize } : {})] });
+  if (related.length) trackList(related, "Related products");
+  pageView(p.title);
+}
+function productLd(p, v) {
+  const url = baseUrl() + `?p=${p.id}`;
+  const offer = vv => ({ "@type": "Offer", url: url + `&size=${vv.size}`, sku: vv.vid, priceCurrency: "GBP", price: unitPrice(p).toFixed(2),
+    availability: vv.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock", itemCondition: "https://schema.org/NewCondition",
+    shippingDetails: { "@type": "OfferShippingDetails", shippingRate: { "@type": "MonetaryAmount", value: unitPrice(p) >= CONFIG.freeDeliveryThreshold ? "0.00" : CONFIG.delivery.mainland[0].price.toFixed(2), currency: "GBP" }, shippingDestination: { "@type": "DefinedRegion", addressCountry: "GB" } },
+    hasMerchantReturnPolicy: { "@type": "MerchantReturnPolicy", applicableCountry: "GB", returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow", merchantReturnDays: CONFIG.returnsDays, returnFees: "https://schema.org/FreeReturn", returnMethod: "https://schema.org/ReturnByMail" } });
+  const vs = variants(p);
+  return [{ "@context": "https://schema.org", "@type": "Product", name: p.title, description: p.desc, sku: v ? v.vid : p.sku, productID: p.id, inProductGroupWithID: p.group,
+      brand: { "@type": "Brand", name: p.brand }, color: p.colour, size: v ? `UK ${v.size}` : undefined, audience: { "@type": "PeopleAudience", suggestedGender: p.gender },
+      image: [baseUrl() + CONFIG.imagePath + p.id + ".png", baseUrl() + CONFIG.imagePath + p.id + "-2.png"], url,
+      offers: v ? offer(v) : vs.map(offer) },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: baseUrl() },
+      { "@type": "ListItem", position: 2, name: CATS[p.cat], item: baseUrl() + `?page=shop&cat=${p.cat}` },
+      { "@type": "ListItem", position: 3, name: `${p.name} – ${p.colour}`, item: url }] }];
+}
+
+/* ---------- Cart ---------- */
+function renderCart() {
+  setMeta("Your basket", "Your NorthStep basket.", "?page=cart");
+  const items = cart.items();
+  if (!items.length) {
+    app.innerHTML = `<div class="wrap">${crumbs([["Home", "./"], ["Basket", ""]])}<div class="empty" style="margin-bottom:50px"><h1>Your basket is empty</h1><p class="muted">Find your next favourite pair.</p><div class="btnrow" style="justify-content:center"><a class="btn" href="?page=shop&amp;g=men">Shop Men's</a><a class="btn alt" href="?page=shop&amp;g=women">Shop Women's</a></div></div></div>`;
+    track("view_cart", { currency: "GBP", value: 0, items: [] }); pageView("Basket (empty)"); return;
+  }
+  const t = calcTotals(items, cart.coupon());
+  const toFree = round2(CONFIG.freeDeliveryThreshold - (t.subtotal - t.discount));
+  app.innerHTML = `<div class="wrap">${crumbs([["Home", "./"], ["Basket", ""]])}<h1>Your basket</h1>
+  ${CONFIG.testMode ? `<div class="testbar">TEST MODE – this is a demo store. Checkout creates a simulated order; no payment is taken and nothing is shipped.</div>` : ""}
+  <div class="cartlay"><div>${t.lines.map(l => `
+    <div class="line"><a class="thumb" href="?p=${l.p.id}&amp;size=${l.v.size}">${shoeSVG(l.p, 0, { label: false })}</a>
+      <div><a href="?p=${l.p.id}&amp;size=${l.v.size}" style="font-weight:700;text-decoration:none">${esc(l.p.name)}</a>
+        <div class="small muted">${GENDER_LABEL[l.p.gender]} · ${esc(l.p.colour)} · UK ${l.v.size}</div><div class="xs muted">SKU ${l.vid}</div>
+        <div class="small" style="margin-top:4px">${money(l.unit)} each${l.p.sale ? ` <s class="muted">${money(l.p.price)}</s>` : ""}</div>
+        ${l.v.stock < l.qty ? `<div class="small" style="color:var(--err)">Only ${l.v.stock} left – quantity adjusted.</div>` : ""}
+        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><div class="qty"><button data-dec="${l.vid}" aria-label="Decrease quantity of ${esc(l.p.name)} UK ${l.v.size}">−</button><input aria-label="Quantity" value="${l.qty}" readonly><button data-inc="${l.vid}" aria-label="Increase quantity" ${l.qty >= Math.min(10, l.v.stock) ? "disabled" : ""}>+</button></div>
+        <button class="link small" data-rm="${l.vid}">Remove</button></div></div>
+      <div style="font-weight:700">${money(l.line)}</div></div>`).join("")}
+    <p style="margin-top:16px"><a href="?page=shop">← Continue shopping</a></p></div>
+    <aside class="summary" aria-label="Order summary"><h2 style="font-size:1.2rem">Order summary</h2>
+      <div class="r"><span>Subtotal</span><span>${money(t.subtotal)}</span></div>
+      ${t.discount ? `<div class="r" style="color:var(--ok)"><span>Discount (${t.code})</span><span>−${money(t.discount)}</span></div>` : ""}
+      <div class="r"><span>Standard delivery (UK mainland)</span><span>${t.shipping ? money(t.shipping) : "Free"}</span></div>
+      <div class="r tot"><span>Estimated total</span><span>${money(t.total)}</span></div>
+      <div class="xs muted">Includes VAT of ${money(t.tax)}. Delivery is confirmed at checkout from your postcode.</div>
+      ${toFree > 0 && t.shipping ? `<div class="note info">Spend ${money(toFree)} more for free Standard delivery.</div>` : `<div class="note ok">You've qualified for free Standard delivery.</div>`}
+      <form id="couponForm" style="margin:12px 0" novalidate><label for="coupon" class="small">Discount code</label>
+        <div style="display:flex;gap:8px"><input id="coupon" type="text" value="${esc(cart.coupon())}" autocomplete="off" style="text-transform:uppercase"><button class="btn sm alt" style="height:46px">Apply</button></div>
+        <div class="small" id="couponMsg" role="status" style="margin-top:6px;${t.couponMsg ? "color:var(--err)" : t.code ? "color:var(--ok)" : ""}">${t.couponMsg ? esc(t.couponMsg) : t.code ? `Code ${t.code} applied – ${esc(CONFIG.discounts[t.code].label)}. <button type="button" class="link" id="rmCoupon">Remove</button>` : ""}</div>
+        <details class="xs muted" style="margin-top:8px"><summary>Demo discount codes</summary><ul style="padding-left:1.1em;margin:6px 0">${Object.entries(CONFIG.discounts).map(([k, v]) => `<li><code>${k}</code> – ${esc(v.label)}</li>`).join("")}</ul></details></form>
+      <a class="btn block accent" href="?page=checkout">Checkout securely</a>
+      <p class="xs muted" style="margin-top:10px;text-align:center">${CONFIG.testMode ? "Test checkout – no card details are collected." : ""}</p>
+    </aside></div></div>`;
+  app.onclick = null;
+  $(".cartlay").addEventListener("click", e => {
+    const inc = e.target.closest("[data-inc]"), dec = e.target.closest("[data-dec]"), rm = e.target.closest("[data-rm]");
+    if (inc) { const it = cart.items().find(i => i.vid === inc.dataset.inc); const r = variantById(it.vid); cart.setQty(it.vid, it.qty + 1); track("add_to_cart", { currency: "GBP", value: unitPrice(r.p), items: [gaItem(r.p, { vid: it.vid, size: r.v.size, qty: 1 })] }); renderCart(); }
+    if (dec) { const it = cart.items().find(i => i.vid === dec.dataset.dec); const r = variantById(it.vid); if (it.qty <= 1) { cart.remove(it.vid); } else cart.setQty(it.vid, it.qty - 1); track("remove_from_cart", { currency: "GBP", value: unitPrice(r.p), items: [gaItem(r.p, { vid: it.vid, size: r.v.size, qty: 1 })] }); renderCart(); }
+    if (rm) { const it = cart.items().find(i => i.vid === rm.dataset.rm); const r = variantById(it.vid); cart.remove(it.vid); track("remove_from_cart", { currency: "GBP", value: round2(unitPrice(r.p) * it.qty), items: [gaItem(r.p, { vid: it.vid, size: r.v.size, qty: it.qty })] }); toast("Item removed from your basket"); renderCart(); }
+  });
+  $("#couponForm").addEventListener("submit", e => { e.preventDefault(); store.set("ns_coupon", $("#coupon").value.trim().toUpperCase()); renderCart(); $("#coupon").focus(); });
+  $("#rmCoupon")?.addEventListener("click", () => { store.del("ns_coupon"); renderCart(); });
+  // Clamp quantities to current stock
+  cart.items().forEach(i => { const r = variantById(i.vid); if (r.v.stock === 0) cart.remove(i.vid); else if (i.qty > r.v.stock) cart.setQty(i.vid, r.v.stock); });
+  track("view_cart", { currency: "GBP", value: t.total, items: t.lines.map(l => gaItem(l.p, { vid: l.vid, size: l.v.size, qty: l.qty })) });
+  pageView("Basket");
+}
+
+/* ---------- Checkout ---------- */
+function renderCheckout() {
+  setMeta("Checkout", "Secure checkout", "?page=checkout");
+  const items = cart.items();
+  if (!items.length) return go("?page=cart", true);
+  const saved = store.get("ns_checkout_draft", {});
+  app.innerHTML = `<div class="wrap">${crumbs([["Home", "./"], ["Basket", "?page=cart"], ["Checkout", ""]])}<h1>Checkout</h1>
+  ${CONFIG.testMode ? `<div class="testbar">TEST CHECKOUT – Orders placed here are simulated practice transactions. No payment is taken, no card details are requested and nothing will be delivered.</div>` : ""}
+  <div class="cartlay"><form id="co" novalidate>
+    <div class="formerr" id="coErr" role="alert" tabindex="-1"></div>
+    <fieldset><legend>1. Contact</legend>
+      <div class="field"><label for="email">Email address</label><input id="email" type="email" autocomplete="email" required><div class="err">Enter a valid email address, like name@example.com</div></div>
+      <div class="field"><label for="phone">Phone number <span class="muted">(optional, for delivery updates)</span></label><input id="phone" type="tel" autocomplete="tel"><div class="err">Enter a valid UK phone number</div></div></fieldset>
+    <fieldset><legend>2. Delivery address</legend>
+      <div class="row2"><div class="field"><label for="first">First name</label><input id="first" type="text" autocomplete="given-name" required><div class="err">Enter your first name</div></div>
+        <div class="field"><label for="last">Last name</label><input id="last" type="text" autocomplete="family-name" required><div class="err">Enter your last name</div></div></div>
+      <div class="field"><label for="addr1">Address line 1</label><input id="addr1" type="text" autocomplete="address-line1" required><div class="err">Enter the first line of your address</div></div>
+      <div class="field"><label for="addr2">Address line 2 <span class="muted">(optional)</span></label><input id="addr2" type="text" autocomplete="address-line2"></div>
+      <div class="row2"><div class="field"><label for="town">Town or city</label><input id="town" type="text" autocomplete="address-level2" required><div class="err">Enter your town or city</div></div>
+        <div class="field"><label for="county">County <span class="muted">(optional)</span></label><input id="county" type="text" autocomplete="address-level1"></div></div>
+      <div class="row2"><div class="field"><label for="postcode">Postcode</label><input id="postcode" type="text" autocomplete="postal-code" required style="text-transform:uppercase" aria-describedby="pcHint"><div class="hint" id="pcHint">e.g. SW1A 1AA</div><div class="err" id="pcErr">Enter a valid UK postcode</div></div>
+        <div class="field"><label for="country">Country</label><select id="country" disabled><option>United Kingdom</option></select></div></div></fieldset>
+    <fieldset><legend>3. Delivery method</legend><div id="shipOpts"><p class="muted small">Enter a valid postcode to see delivery options.</p></div></fieldset>
+    <fieldset><legend>4. Payment</legend>
+      ${CONFIG.testMode ? `<label class="radio"><input type="radio" name="pay" value="test" id="payTest"><span><b>Simulated test payment</b><br><span class="small muted">No card details are collected. A real store would use a payment provider's hosted fields (e.g. Stripe, Adyen, PayPal) so card data never touches this site.</span></span></label>`
+        : `<div class="note err">Live mode is enabled but no payment provider is configured. Connect a PCI-compliant provider before taking orders.</div>`}
+      <div class="field" id="payField"><div class="err">Select a payment method</div></div>
+      <label class="chk small" style="margin-top:6px"><input type="checkbox" id="terms"> I agree to the&nbsp;<a href="?page=terms" target="_blank">terms &amp; conditions</a></label><div class="field" id="termsField"><div class="err">Please accept the terms to continue</div></div></fieldset>
+    <button class="btn accent block" id="placeBtn" ${CONFIG.testMode ? "" : "disabled"}>${CONFIG.testMode ? "Place test order" : "Payment provider required"}</button>
+  </form>
+  <aside class="summary" id="coSummary" aria-label="Order summary"></aside></div></div>`;
+  const f = id => $("#" + id);
+  ["email", "phone", "first", "last", "addr1", "addr2", "town", "county", "postcode"].forEach(k => { if (saved[k]) f(k).value = saved[k]; });
+  let zone = null, method = null, shipTracked = "", payTracked = false;
+  const itemsGA = () => calcTotals(cart.items(), cart.coupon(), zone || "mainland", method || "standard").lines.map(l => gaItem(l.p, { vid: l.vid, size: l.v.size, qty: l.qty }));
+  const summary = () => {
+    const t = calcTotals(cart.items(), cart.coupon(), zone && zone !== "unsupported" ? zone : "mainland", method || "standard");
+    f("coSummary").innerHTML = `<h2 style="font-size:1.2rem">Order summary</h2>${t.lines.map(l => `<div class="r small"><span>${l.qty} × ${esc(l.p.name)} – ${esc(l.p.colour)}, UK ${l.v.size}</span><span>${money(l.line)}</span></div>`).join("")}
+      <div class="r" style="border-top:1px solid #d7dae0;padding-top:10px"><span>Subtotal</span><span>${money(t.subtotal)}</span></div>
+      ${t.discount ? `<div class="r" style="color:var(--ok)"><span>Discount (${t.code})</span><span>−${money(t.discount)}</span></div>` : ""}
+      <div class="r"><span>Delivery${zone && t.method ? ` – ${esc(t.method.name)}` : ""}</span><span>${zone && zone !== "unsupported" ? (t.shipping ? money(t.shipping) : "Free") : "Calculated next"}</span></div>
+      <div class="r tot"><span>Total</span><span>${money(t.total)}</span></div><div class="xs muted">Includes VAT of ${money(t.tax)}</div>
+      <p class="small" style="margin-top:12px"><a href="?page=cart">Edit basket</a></p>`;
+    return t;
+  };
+  const renderShip = () => {
+    const box = f("shipOpts"), z = zoneFor(f("postcode").value);
+    zone = z;
+    if (!z) { box.innerHTML = `<p class="muted small">Enter a valid postcode to see delivery options.</p>`; method = null; summary(); return; }
+    if (z === "unsupported") { box.innerHTML = `<div class="note warn">Sorry, we don't currently deliver to ${CONFIG.zones.unsupported.label} (demo setting).</div>`; method = null; summary(); return; }
+    const t0 = calcTotals(cart.items(), cart.coupon(), z, "standard"), opts = CONFIG.delivery[z];
+    if (!opts.find(o => o.id === method)) method = opts[0].id;
+    box.innerHTML = `<p class="small muted">Delivering to: <b>${esc(CONFIG.zones[z].label)}</b></p>` + opts.map(o => {
+      const tt = calcTotals(cart.items(), cart.coupon(), z, o.id);
+      return `<label class="radio"><input type="radio" name="ship" value="${o.id}" ${o.id === method ? "checked" : ""}><span style="flex:1"><b>${esc(o.name)}</b> – ${tt.shipping ? money(tt.shipping) : "Free"}<br><span class="small muted">${esc(o.eta)}${o.freeOver ? ` · free over ${money(o.freeOver)}` : ""}</span></span></label>`;
+    }).join("");
+    summary(); fireShip();
+  };
+  const fireShip = () => {
+    if (!zone || zone === "unsupported" || !method) return;
+    const sig = zone + method; if (sig === shipTracked) return; shipTracked = sig;
+    const t = summary();
+    track("add_shipping_info", { currency: "GBP", value: t.total, coupon: t.code || undefined, shipping_tier: t.method.name, items: itemsGA() });
+  };
+  f("shipOpts").addEventListener("change", e => { if (e.target.name === "ship") { method = e.target.value; summary(); fireShip(); } });
+  f("postcode").addEventListener("input", renderShip);
+  f("postcode").addEventListener("blur", () => { const n = normPostcode(f("postcode").value); if (n) f("postcode").value = n; });
+  f("payTest")?.addEventListener("change", () => { if (payTracked) return; payTracked = true; const t = summary(); track("add_payment_info", { currency: "GBP", value: t.total, coupon: t.code || undefined, payment_type: "Simulated test payment", items: itemsGA() }); });
+  $("#co").addEventListener("input", () => { const d = {}; ["email", "phone", "first", "last", "addr1", "addr2", "town", "county", "postcode"].forEach(k => d[k] = f(k).value); store.set("ns_checkout_draft", d); });
+  const setBad = (id, bad, msg) => { const el = f(id), fld = el.closest(".field"); fld.classList.toggle("bad", bad); el.setAttribute("aria-invalid", bad); if (msg) fld.querySelector(".err").textContent = msg; return bad; };
+  $("#co").addEventListener("submit", e => {
+    e.preventDefault(); let firstBad = null; const mark = (id, bad, msg) => { if (setBad(id, bad, msg) && !firstBad) firstBad = f(id); };
+    mark("email", !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f("email").value.trim()));
+    const ph = f("phone").value.replace(/[\s()-]/g, ""); mark("phone", ph && !/^(\+44|0)\d{9,10}$/.test(ph));
+    ["first", "last", "addr1", "town"].forEach(k => mark(k, f(k).value.trim().length < 2));
+    const z = zoneFor(f("postcode").value);
+    mark("postcode", !z || z === "unsupported", !z ? "Enter a valid UK postcode, like SW1A 1AA" : "We don't deliver to this postcode");
+    const payOk = !!$('input[name="pay"]:checked'); f("payField").classList.toggle("bad", !payOk); if (!payOk && !firstBad) firstBad = f("payTest");
+    const termsOk = f("terms").checked; f("termsField").classList.toggle("bad", !termsOk); if (!termsOk && !firstBad) firstBad = f("terms");
+    if (firstBad) { const er = f("coErr"); er.textContent = "Please correct the highlighted fields below."; er.classList.add("show"); firstBad.focus(); return; }
+    // Re-validate stock at the moment of ordering
+    for (const i of cart.items()) { const r = variantById(i.vid); if (r.v.stock < i.qty) { const er = f("coErr"); er.textContent = `Sorry, only ${r.v.stock} left of ${r.p.name} UK ${r.v.size}. Please update your basket.`; er.classList.add("show"); er.focus(); return; } }
+    const t = calcTotals(cart.items(), cart.coupon(), z, method);
+    const txid = `${CONFIG.testMode ? "TEST-" : ""}NS-${new Date().toISOString().slice(0, 10).replace(/-/g, "")}-${Math.random().toString(36).slice(2, 7).toUpperCase()}`;
+    const order = { id: txid, test: CONFIG.testMode, created: new Date().toISOString(), email: f("email").value.trim(),
+      address: { name: `${f("first").value.trim()} ${f("last").value.trim()}`, line1: f("addr1").value.trim(), line2: f("addr2").value.trim(), town: f("town").value.trim(), county: f("county").value.trim(), postcode: normPostcode(f("postcode").value) },
+      lines: t.lines.map(l => ({ vid: l.vid, pid: l.p.id, name: l.p.name, colour: l.p.colour, size: l.v.size, qty: l.qty, unit: l.unit, line: l.line })),
+      subtotal: t.subtotal, discount: t.discount, coupon: t.code, shipping: t.shipping, shippingMethod: t.method.name, zone: z, tax: t.tax, total: t.total };
+    const orders = store.get("ns_orders", []); orders.unshift(order); store.set("ns_orders", orders.slice(0, 50));
+    const sold = soldMap(); order.lines.forEach(l => sold[l.vid] = (sold[l.vid] || 0) + l.qty); store.set("ns_sold", sold);
+    cart.clear(); store.del("ns_coupon"); store.del("ns_checkout_draft");
+    go(`?page=order&id=${encodeURIComponent(txid)}`, true);
+  });
+  summary(); renderShip();
+  const t = calcTotals(items, cart.coupon());
+  track("begin_checkout", { currency: "GBP", value: t.total, coupon: t.code || undefined, items: itemsGA() });
+  pageView("Checkout");
+}
+
+/* ---------- Order confirmation (purchase event fires once per transaction) ---------- */
+function renderOrder(q) {
+  setMeta("Order confirmation", "Order confirmation", "?page=order");
+  const o = store.get("ns_orders", []).find(x => x.id === q.get("id"));
+  if (!o) { app.innerHTML = `<div class="wrap prose"><h1>Order not found</h1><p>We couldn't find that order on this device.</p><a class="btn" href="./">Back to home</a></div>`; return; }
+  app.innerHTML = `<div class="wrap" style="max-width:820px;padding-bottom:50px">${crumbs([["Home", "./"], ["Order confirmation", ""]])}
+    ${o.test ? `<div class="testbar">SIMULATED TEST ORDER – no payment was taken and this order will not be fulfilled.</div>` : ""}
+    <h1>Thank you, ${esc(o.address.name.split(" ")[0])}!</h1>
+    <p>Your ${o.test ? "test " : ""}order <b>${esc(o.id)}</b> has been placed. ${o.test ? "In a live store a confirmation email would be sent to" : "A confirmation email has been sent to"} <b>${esc(o.email)}</b>.</p>
+    <div class="panel"><h2>Order summary</h2>
+      <table class="data"><thead><tr><th>Item</th><th>SKU</th><th class="num">Qty</th><th class="num">Price</th><th class="num">Total</th></tr></thead><tbody>
+      ${o.lines.map(l => `<tr><td>${esc(l.name)} – ${esc(l.colour)}, UK ${l.size}</td><td>${l.vid}</td><td class="num">${l.qty}</td><td class="num">${money(l.unit)}</td><td class="num">${money(l.line)}</td></tr>`).join("")}</tbody>
+      <tfoot><tr><td colspan="4">Subtotal</td><td class="num">${money(o.subtotal)}</td></tr>
+      ${o.discount ? `<tr><td colspan="4">Discount (${o.coupon})</td><td class="num">−${money(o.discount)}</td></tr>` : ""}
+      <tr><td colspan="4">Delivery – ${esc(o.shippingMethod)}</td><td class="num">${o.shipping ? money(o.shipping) : "Free"}</td></tr>
+      <tr><td colspan="4">Total (incl. VAT ${money(o.tax)})</td><td class="num">${money(o.total)}</td></tr></tfoot></table></div>
+    <div class="panel"><h2>Delivery address</h2><p style="margin:0">${[o.address.name, o.address.line1, o.address.line2, o.address.town, o.address.county, o.address.postcode, "United Kingdom"].filter(Boolean).map(esc).join("<br>")}</p></div>
+    <div class="btnrow"><a class="btn" href="?page=shop">Continue shopping</a><a class="btn alt" href="?page=account">View test orders</a></div></div>`;
+  const tracked = store.get("ns_tx_tracked", []);
+  if (!tracked.includes(o.id)) {
+    track("purchase", { transaction_id: o.id, currency: "GBP", value: o.total, tax: o.tax, shipping: o.shipping, coupon: o.coupon || undefined,
+      items: o.lines.map((l, i) => { const p = byId[l.pid]; return { ...gaItem(p, { vid: l.vid, size: l.size, qty: l.qty }), price: l.unit, index: i }; }) },
+      { test_order: o.test, order_type: o.test ? "test" : "live" });
+    tracked.push(o.id); store.set("ns_tx_tracked", tracked.slice(-200));
+  }
+  pageView("Order confirmation");
+}
+
+/* ---------- Account (demo) ---------- */
+function renderAccount() {
+  setMeta("Your account", "", "?page=account");
+  const orders = store.get("ns_orders", []);
+  app.innerHTML = `<div class="wrap prose">${crumbs([["Home", "./"], ["Account", ""]])}<h1>Your account</h1>
+  <div class="note info">Customer accounts are not enabled in this demo (there's no backend). Test orders placed on this device are listed below and stored only in your browser.</div>
+  ${orders.length ? `<div class="tablewrap"><table class="data"><thead><tr><th>Order</th><th>Date</th><th class="num">Items</th><th class="num">Total</th><th></th></tr></thead><tbody>
+  ${orders.map(o => `<tr><td>${esc(o.id)} ${o.test ? `<span class="pill w">TEST</span>` : ""}</td><td>${new Date(o.created).toLocaleString("en-GB")}</td><td class="num">${o.lines.reduce((a, l) => a + l.qty, 0)}</td><td class="num">${money(o.total)}</td><td><a href="?page=order&amp;id=${encodeURIComponent(o.id)}">View</a></td></tr>`).join("")}</tbody></table></div>` : `<div class="empty"><h3>No orders yet</h3><p class="muted">Place a test order to see it here.</p><a class="btn sm" href="?page=shop">Start shopping</a></div>`}</div>`;
+  pageView("Account");
+}
+
+/* ---------- Policies (TEMPLATES – review before launch) ---------- */
+const PH = s => `<span class="ph">${esc(s)}</span>`;
+function renderPolicy(kind) {
+  const C = CONFIG.contact, m = CONFIG.delivery;
+  const banner = `<div class="note warn"><b>Template policy for a fictional demo store.</b> Placeholder details are highlighted. Have every policy reviewed (ideally by a qualified adviser) before any real launch.</div>`;
+  const pages = {
+    delivery: ["Delivery information", `${banner}<h2>UK delivery options</h2><table class="data"><thead><tr><th>Zone</th><th>Service</th><th>Estimated time</th><th class="num">Price</th></tr></thead><tbody>
+      ${Object.entries(m).flatMap(([z, opts]) => opts.map(o => `<tr><td>${esc(CONFIG.zones[z].label)}</td><td>${esc(o.name)}</td><td>${esc(o.eta)}</td><td class="num">${money(o.price)}${o.freeOver ? ` (free over ${money(o.freeOver)})` : ""}</td></tr>`)).join("")}</tbody></table>
+      <p class="small muted">Highlands &amp; Islands postcodes: ${CONFIG.zones.highlands.districts.map(([a, f, t]) => t === 99 ? a : `${a}${f}–${a}${t}`).join(", ")}.</p>
+      <h2>Where we don't deliver</h2><p>We don't currently deliver to the ${esc(CONFIG.zones.unsupported.label)} or outside the UK.</p>
+      <h2>Dispatch</h2><p>Orders are usually dispatched within 1 working day. Working days are Monday to Friday, excluding UK bank holidays. Estimated times start from dispatch.</p>`],
+    returns: ["Returns & refunds", `${banner}<h2>Our ${CONFIG.returnsDays}-day returns policy</h2><p>If you're not happy with your order, you can return unworn items in their original packaging within ${CONFIG.returnsDays} days of delivery for a full refund of the item price.</p>
+      <h2>Your statutory rights</h2><p>Under the Consumer Contracts Regulations you generally have the right to cancel an online order within 14 days of delivery, and the Consumer Rights Act 2015 gives you rights if goods are faulty. Our policy is in addition to, and does not affect, your statutory rights.</p>
+      <h2>How to return</h2><ol><li>Email ${esc(C.email)} with your order number.</li><li>We'll send you ${PH("[returns method / free returns label provider]")}.</li><li>Pack the items securely and send them back within ${CONFIG.returnsDays} days.</li></ol>
+      <h2>Refunds</h2><p>Refunds are made to the original payment method within 14 days of us receiving your return. Original standard delivery charges are refunded when you return your whole order within the cancellation period.</p>
+      <h2>Faulty items</h2><p>If an item is faulty, contact us and we'll arrange a repair, replacement or refund in line with your statutory rights.</p>`],
+    privacy: ["Privacy policy", `${banner}<p><b>Who we are:</b> ${PH(C.company)}, ${PH(C.address)} ("we"). Contact: ${esc(C.email)}.</p>
+      <h2>What this demo stores</h2><p>This demo has no server. Your basket, test orders and cookie choices are stored only in your own browser (local storage) and are never sent to us.</p>
+      <h2>What a live store would collect</h2><ul><li>Order details (name, address, email, phone) to fulfil orders – lawful basis: contract.</li><li>Marketing email sign-ups – lawful basis: consent; unsubscribe at any time.</li><li>Analytics and advertising data – only with your consent via our cookie banner.</li></ul>
+      <h2>Your rights</h2><p>Under UK GDPR you have rights to access, correct, erase and port your data, and to object to or restrict processing. You can complain to the Information Commissioner's Office (ICO).</p>
+      <h2>Processors</h2><p>${PH("[List processors e.g. hosting, payment provider, email platform, Google Analytics, Google Ads]")}</p>`],
+    cookies: ["Cookie policy", `${banner}<h2>Essential storage</h2><p>Used to keep your basket, test orders and cookie preferences. Always on.</p>
+      <h2>Analytics cookies (optional)</h2><p>If you accept, Google Analytics 4 (via Google Tag Manager) measures how the site is used. Cookies such as <code>_ga</code> and <code>_ga_*</code> may be set.</p>
+      <h2>Advertising cookies (optional)</h2><p>If you accept, Google Ads may measure conversions from our ads and build remarketing audiences.</p>
+      <h2>Consent Mode</h2><p>We use Google Consent Mode v2. Until you choose, analytics and advertising storage are set to “denied”.</p>
+      <p><button class="btn sm" onclick="openCookie(true)">Change cookie settings</button></p>`],
+    terms: ["Terms & conditions", `${banner}<h2>About these terms</h2><p>These terms apply to orders placed on this website, operated by ${PH(C.company)}.</p>
+      <h2>Demo notice</h2><p>This website is a portfolio demonstration. Products are fictional, orders are simulated and no contract of sale is formed.</p>
+      <h2>Prices</h2><p>Prices are in pounds sterling (GBP) and include VAT at the current rate. Delivery charges are shown at checkout.</p>
+      <h2>Orders</h2><p>${PH("[Order acceptance, stock, cancellations, payment, delivery, returns and liability terms – to be drafted/reviewed before launch]")}</p>
+      <h2>Governing law</h2><p>${PH("[Specify the governing law, e.g. England and Wales]")}</p>`]
+  };
+  const [title, body] = pages[kind];
+  setMeta(title, `${title} for NorthStep Footwear.`, `?page=${kind}`);
+  app.innerHTML = `<div class="wrap prose">${crumbs([["Home", "./"], [title, ""]])}<h1>${esc(title)}</h1>${body}</div>`;
+  pageView(title);
+}
+function renderContact() {
+  const C = CONFIG.contact; setMeta("Contact us", "Contact NorthStep Footwear customer service.", "?page=contact");
+  app.innerHTML = `<div class="wrap prose">${crumbs([["Home", "./"], ["Contact", ""]])}<h1>Contact us</h1>
+    <div class="note warn">Placeholder contact details – replace in <code>CONFIG.contact</code> before launch. Do not use a made-up real address.</div>
+    <table class="data"><tbody><tr><th>Email</th><td>${esc(C.email)}</td></tr><tr><th>Phone</th><td>${PH(C.phone)}</td></tr><tr><th>Hours</th><td>${esc(C.hours)}</td></tr><tr><th>Address</th><td>${PH(C.address)}</td></tr><tr><th>Company</th><td>${PH(C.company)}</td></tr></tbody></table>
+    <h2>Send us a message</h2><form id="cform" novalidate>
+      <div class="field"><label for="cname">Name</label><input id="cname" type="text" autocomplete="name"><div class="err">Enter your name</div></div>
+      <div class="field"><label for="cemail">Email</label><input id="cemail" type="email" autocomplete="email"><div class="err">Enter a valid email address</div></div>
+      <div class="field"><label for="cmsg">Message</label><textarea id="cmsg" rows="5"></textarea><div class="err">Enter a message</div></div>
+      <button class="btn">Send message</button><p class="small" id="cres" role="status" style="margin-top:10px"></p></form></div>`;
+  $("#cform").addEventListener("submit", e => {
+    e.preventDefault(); let ok = true;
+    [["cname", v => v.length > 1], ["cemail", v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)], ["cmsg", v => v.length > 4]].forEach(([id, fn]) => { const el = $("#" + id), bad = !fn(el.value.trim()); el.closest(".field").classList.toggle("bad", bad); el.setAttribute("aria-invalid", bad); if (bad) ok = false; });
+    $("#cres").innerHTML = ok ? `<span style="color:var(--ok);font-weight:600">Thanks – message validated. (Demo: no email service is connected, so nothing was sent.)</span>` : `<span style="color:var(--err)">Please correct the highlighted fields.</span>`;
+    if (ok) e.target.reset();
+  });
+  pageView("Contact");
+}
+function renderSizeGuide() {
+  setMeta("Size guide", "NorthStep UK shoe size guide.", "?page=sizeguide");
+  const rows = [[3,36,5.5,22.5],[4,37,6.5,23.5],[5,38,7.5,24],[6,39,8,24.5],[7,40.5,9,25.5],[8,42,10,26.5],[9,43,10.5,27.5],[10,44.5,11.5,28.5],[11,45.5,12,29],[12,47,13,30]];
+  app.innerHTML = `<div class="wrap prose">${crumbs([["Home", "./"], ["Size guide", ""]])}<h1>Size guide</h1><p>Our shoes use UK sizing. Men's styles come in UK 6–12, women's in UK 3–8 and unisex in UK 4–11. Conversions are approximate – if you're between sizes, we suggest sizing up.</p>
+  <table class="data"><thead><tr><th>UK</th><th>EU</th><th>US (women's)</th><th>Foot length (cm)</th></tr></thead><tbody>${rows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join("")}</tbody></table>
+  <p class="small muted" style="margin-top:10px">Illustrative conversion table for this demo store.</p></div>`;
+  pageView("Size guide");
+}
+function renderNotFound() { setMeta("Page not found", "", ""); app.innerHTML = `<div class="wrap prose" style="padding-top:40px"><h1>Page not found</h1><p>Sorry, we couldn't find that page or product.</p><a class="btn" href="?page=shop">Shop all footwear</a></div>`; }
+
+/* =============================================================================
+   10. GOOGLE MERCHANT CENTER FEED — generated from PRODUCTS (one row per size variant)
+============================================================================= */
+const FEED_COLS = ["id","item_group_id","title","description","link","image_link","additional_image_link","availability","price","sale_price","brand","gtin","mpn","identifier_exists","condition","google_product_category","product_type","gender","age_group","color","size","size_system","size_type","shipping","custom_label_0","custom_label_1","custom_label_2","custom_label_3","custom_label_4"];
+function buildFeed() {
+  const base = baseUrl(), img = base + CONFIG.imagePath, rows = [];
+  PRODUCTS.forEach(p => variants(p).forEach(v => {
+    const margin = (unitPrice(p) / 1.2 - p.cost) / (unitPrice(p) / 1.2);
+    const ship = CONFIG.delivery.mainland[0], shipCost = unitPrice(p) >= (ship.freeOver || Infinity) ? 0 : ship.price;
+    rows.push({
+      id: v.vid, item_group_id: p.group,
+      title: `${p.brand} ${GENDER_LABEL[p.gender]} ${p.name} – ${p.colour} – UK ${v.size}`,
+      description: `${p.desc} ${p.bullets.join(". ")}.`,
+      link: `${base}?p=${p.id}&size=${v.size}`, image_link: `${img}${p.id}.png`, additional_image_link: `${img}${p.id}-2.png`,
+      availability: v.stock > 0 ? "in_stock" : "out_of_stock",
+      price: `${p.price.toFixed(2)} GBP`, sale_price: p.sale ? `${p.sale.toFixed(2)} GBP` : "",
+      brand: p.brand, gtin: p.gtin, mpn: p.mpn, identifier_exists: p.gtin || p.mpn ? "yes" : "no",
+      condition: p.condition, google_product_category: CONFIG.google.productCategory, product_type: p.productType,
+      gender: p.gender, age_group: p.ageGroup, color: p.colour, size: String(v.size), size_system: "UK", size_type: "regular",
+      shipping: `GB::${ship.name}:${shipCost.toFixed(2)} GBP`,
+      custom_label_0: margin >= 0.55 ? "margin_high" : margin >= 0.45 ? "margin_mid" : "margin_low",
+      custom_label_1: p.cat, custom_label_2: p.sale ? "on_sale" : "full_price", custom_label_3: isNew(p) ? "new_in" : "core",
+      custom_label_4: p.pop >= 85 ? "bestseller" : "standard",
+      _stock: v.stock
+    });
+  }));
+  return rows;
+}
+const csvCell = v => { const s = String(v ?? ""); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
+function feedCSV(rows, sep = ",") { const cell = sep === "," ? csvCell : v => String(v ?? "").replace(/[\t\n]/g, " "); return [FEED_COLS.join(sep), ...rows.map(r => FEED_COLS.map(c => cell(r[c])).join(sep))].join("\n"); }
+function xmlEsc(s) { return String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+function feedXML(rows) {
+  const item = r => "    <item>\n" + FEED_COLS.filter(c => r[c] !== "" && c !== "shipping").map(c => c === "title" || c === "description" || c === "link" ? `      <${c === "link" ? "link" : c}>${xmlEsc(r[c])}</${c}>` : `      <g:${c}>${xmlEsc(r[c])}</g:${c}>`).join("\n")
+    + `\n      <g:shipping><g:country>GB</g:country><g:service>${xmlEsc(r.shipping.split(":")[2])}</g:service><g:price>${xmlEsc(r.shipping.split(":")[3])}</g:price></g:shipping>\n    </item>`;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">\n  <channel>\n    <title>${xmlEsc(CONFIG.storeName)} product feed</title>\n    <link>${xmlEsc(baseUrl())}</link>\n    <description>Generated ${new Date().toISOString()} from the store product database (${rows.length} items)</description>\n${rows.map(item).join("\n")}\n  </channel>\n</rss>\n`;
+}
+function download(name, text, type) { const b = new Blob([text], { type }); const a = document.createElement("a"); a.href = URL.createObjectURL(b); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+
+/* Feed validation */
+function validateFeed(rows, opts = {}) {
+  const issues = [], add = (sev, item, msg, fix) => issues.push({ sev, item, msg, fix });
+  const base = baseUrl();
+  // Store / account-level checks
+  if (isPlaceholder(base) || /localhost|127\.0\.0\.1|^file:/i.test(base)) add("error", "Store", `Site URL is a placeholder or local address (${base}).`, "Set your public GitHub Pages URL in Store settings above or CONFIG.siteUrl, then re-export.");
+  if (!/^https:\/\//.test(base)) add("error", "Store", "Site URL must use HTTPS.", "GitHub Pages provides HTTPS automatically – use the https:// address.");
+  if (CONFIG.testMode) add("error", "Policy", "Checkout is in TEST mode with no payment provider – products cannot be genuinely purchased.", "Merchant Center requires a working checkout and real, purchasable products. Treat this feed as a diagnostics exercise; do not run paid ads for fictional products.");
+  if (isPlaceholder(CONFIG.contact.address) || isPlaceholder(CONFIG.contact.email) || isPlaceholder(CONFIG.contact.phone)) add("warning", "Policy", "Placeholder contact details (email/phone/address).", "Merchant Center checks for real contact information – replace CONFIG.contact for a real business.");
+  if (TRACKING_MODE === "none") add("warning", "Tracking", "No GTM container or GA4 Measurement ID configured.", "Add your IDs in CONFIG to measure conversions.");
+  add("info", "Store", "Shipping is defined per item in the feed (UK mainland Standard).", "Also configure shipping & returns in Merchant Center so Highlands/NI rates and returns show correctly.");
+  add("info", "Images", `Image URLs point to ${base}${CONFIG.imagePath}. These files must exist.`, "Use “Download product images” and commit the PNGs to the images/ folder of your repo.");
+  // Item-level checks
+  const ids = new Set(), groups = {};
+  const req = ["id", "title", "description", "link", "image_link", "availability", "price", "brand", "condition"];
+  rows.forEach(r => {
+    const iid = r.id || "(missing id)";
+    req.forEach(f => { if (!r[f]) add("error", iid, `Missing required attribute: ${f}.`, `Provide a value for ${f}.`); });
+    if (r.id) { if (ids.has(r.id)) add("error", iid, "Duplicate item ID.", "Every variant needs a unique id."); ids.add(r.id); if (r.id.length > 50) add("error", iid, "ID longer than 50 characters.", "Shorten the ID."); }
+    if (r.title && r.title.length > 150) add("error", iid, `Title is ${r.title.length} characters (max 150).`, "Shorten the title; keep key attributes first.");
+    if (r.description && r.description.length > 5000) add("error", iid, "Description exceeds 5,000 characters.", "Shorten the description.");
+    const pm = /^(\d+\.\d{2}) GBP$/.exec(r.price || ""), price = pm ? +pm[1] : NaN;
+    if (r.price && !pm) add("error", iid, `Invalid price format “${r.price}”.`, "Use the format 49.99 GBP.");
+    else if (pm && price <= 0) add("error", iid, "Price must be greater than zero.", "Fix the product price.");
+    if (r.sale_price) { const sm = /^(\d+\.\d{2}) GBP$/.exec(r.sale_price); if (!sm) add("error", iid, "Invalid sale_price format.", "Use the format 39.99 GBP."); else if (+sm[1] >= price) add("error", iid, `sale_price (${r.sale_price}) is not lower than price (${r.price}).`, "Sale price must be below the regular price."); }
+    if (r.link && !r.link.startsWith(base)) add("error", iid, "Landing page domain doesn't match the site URL.", "Links must point to your verified website.");
+    if (r.image_link && !/^https:\/\/.+\.(png|jpe?g|gif|webp)$/i.test(r.image_link)) add("error", iid, "Image link is missing or not an HTTPS PNG/JPG/GIF/WebP URL.", "Provide a direct HTTPS image URL.");
+    if (!["in_stock", "out_of_stock", "preorder", "backorder"].includes(r.availability)) add("error", iid, `Invalid availability “${r.availability}”.`, "Use in_stock / out_of_stock / preorder / backorder.");
+    if (r.availability === "in_stock" && r._stock === 0) add("error", iid, "Marked in_stock but inventory is 0.", "Sync availability with stock.");
+    ["color", "size", "gender", "age_group"].forEach(f => { if (!r[f]) add("error", iid, `Missing ${f} (required for apparel & footwear in the UK).`, `Add ${f}.`); });
+    if (!r.item_group_id) add("error", iid, "Missing item_group_id for a variant product.", "Group sizes/colours with item_group_id.");
+    if (!r.gtin && r.identifier_exists === "no") add("info", iid, "No GTIN – identifier_exists = no.", "Correct for own-brand items without GS1 barcodes. If you register GS1 UK barcodes, add gtin and remove identifier_exists.");
+    if (r.availability === "out_of_stock") add("info", iid, "Variant is out of stock – will not serve in Shopping ads.", "Restock or keep listed for continuity.");
+    if (r.item_group_id) (groups[r.item_group_id] ||= []).push(r);
+  });
+  // Variant consistency across each item group
+  Object.entries(groups).forEach(([g, list]) => {
+    ["brand", "gender", "age_group", "product_type", "google_product_category"].forEach(f => { const vals = new Set(list.map(x => x[f])); if (vals.size > 1) add("error", g, `Variants in group disagree on ${f}: ${[...vals].join(" | ")}.`, "Variant groups should share these attributes."); });
+    const keys = new Set(); list.forEach(x => { const k = x.color + "|" + x.size; if (keys.has(k)) add("error", g, `Two variants share colour “${x.color}” and size ${x.size}.`, "Each variant must differ by at least one variant attribute."); keys.add(k); });
+    if (list.length > 1 && new Set(list.map(x => x.color + x.size)).size !== list.length) add("warning", g, "Variants are not uniquely distinguishable.", "Check colour/size values.");
+    if (list.every(x => x.availability === "out_of_stock")) add("warning", g, "Entire product group is out of stock.", "Consider pausing or restocking.");
+  });
+  // Database consistency
+  PRODUCTS.forEach(p => { if (p.sizes.length !== p.baseStock.length) add("error", p.id, "Size list and stock list lengths differ in the product database.", "Fix the stock array."); });
+  return issues;
+}
+function injectErrors(rows) {
+  const r = rows.map(x => ({ ...x }));
+  if (r[2]) r[2].image_link = "";
+  if (r[5]) r[5].sale_price = "99.99 GBP";
+  if (r[8]) r[8].title = r[8].title + " – " + "Lightweight comfortable stylish everyday footwear for men and women ".repeat(2);
+  if (r[11]) r[11].color = "";
+  if (r[14]) r[14].id = r[13].id;
+  if (r[17]) r[17].price = "£49.99";
+  if (r[20]) { r[20].availability = "in_stock"; r[20]._stock = 0; }
+  if (r[23]) r[23].gender = "female";
+  return r;
+}
+
+/* PNG export of product images for Merchant Center (JSZip loaded on demand from cdnjs) */
+function svgToPng(svg, size = 1200) {
+  return new Promise((res, rej) => {
+    const img = new Image(); const url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg.replace("<svg ", `<svg width="${size}" height="${size}" `));
+    img.onload = () => { const c = document.createElement("canvas"); c.width = c.height = size; const x = c.getContext("2d"); x.fillStyle = "#f4f5f7"; x.fillRect(0, 0, size, size); x.drawImage(img, 0, 0, size, size); c.toBlob(b => b ? res(b) : rej(new Error("toBlob failed")), "image/png"); };
+    img.onerror = () => rej(new Error("SVG render failed")); img.src = url;
+  });
+}
+function loadScript(src) { return new Promise((res, rej) => { const s = document.createElement("script"); s.src = src; s.onload = res; s.onerror = () => rej(new Error("Could not load " + src)); document.head.appendChild(s); }); }
+
+/* ---------- Admin ---------- */
+let adminInject = false;
+function renderAdmin() {
+  setMeta("Store admin", "", "?page=admin");
+  const rows = buildFeed(), feedRows = adminInject ? injectErrors(rows) : rows, issues = validateFeed(feedRows);
+  const cnt = s => issues.filter(i => i.sev === s).length;
+  const inStock = rows.filter(r => r.availability === "in_stock").length;
+  const orders = store.get("ns_orders", []);
+  const status = (ok, txt) => `<span class="pill ${ok ? "o" : "w"}">${ok ? "Configured" : "Placeholder"}</span> ${txt}`;
+  app.innerHTML = `<div class="wrap" style="padding-bottom:40px">${crumbs([["Home", "./"], ["Store admin", ""]])}<h1>Store admin (demo)</h1>
+  <p class="muted">Static, browser-only admin for learning. There is no login because there is no backend – anyone who opens this URL can see it. Nothing here changes data for other visitors.</p>
+  <div class="btnrow"><a class="btn sm" href="?page=dashboard">Product performance dashboard</a><a class="btn sm alt" href="?page=guide">Google Shopping learning guide</a></div>
+
+  <div class="panel"><h2>1. Store settings</h2>
+    <div class="field"><label for="baseUrl">Public site URL (used for feed links, image links, canonical tags and structured data)</label>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><input id="baseUrl" type="url" value="${esc(baseUrl())}" style="flex:1;min-width:240px"><button class="btn sm" id="saveBase" style="height:46px">Save</button><button class="btn sm alt" id="detectBase" style="height:46px">Use this page's address</button></div>
+      <div class="hint">Saved in this browser only. For a permanent value, edit <code>CONFIG.siteUrl</code> in index.html.</div></div>
+    <ul class="small" style="padding-left:1.1em">
+      <li>Google Tag Manager: ${status(!isPlaceholder(CONFIG.gtmContainerId), esc(CONFIG.gtmContainerId))}</li>
+      <li>GA4 Measurement ID: ${status(!isPlaceholder(CONFIG.ga4MeasurementId), esc(CONFIG.ga4MeasurementId))}</li>
+      <li>Tracking mode in use: <b>${TRACKING_MODE === "gtm" ? "Google Tag Manager" : TRACKING_MODE === "gtag" ? "GA4 gtag.js (direct)" : "None – events go to dataLayer only (see event log)"}</b></li>
+      <li>Checkout mode: <b>${CONFIG.testMode ? "TEST (simulated orders, no payment provider)" : "LIVE (requires payment provider)"}</b></li>
+      <li>Consent: <b>${(() => { const c = store.get("ns_consent", null); return c ? `analytics ${c.analytics ? "granted" : "denied"}, ads ${c.ads ? "granted" : "denied"}` : "not yet chosen (defaults denied)"; })()}</b></li></ul></div>
+
+  <div class="panel"><h2>2. Google Merchant Center product feed</h2>
+    <div class="kpis"><div class="kpi"><span>Items (variants)</span><b>${rows.length}</b></div><div class="kpi"><span>Products (colours)</span><b>${PRODUCTS.length}</b></div><div class="kpi"><span>Item groups</span><b>${new Set(rows.map(r => r.item_group_id)).size}</b></div><div class="kpi"><span>In stock</span><b>${inStock}</b></div><div class="kpi"><span>Out of stock</span><b>${rows.length - inStock}</b></div></div>
+    <div class="btnrow"><button class="btn sm" data-dl="xml">Download feed.xml (RSS 2.0)</button><button class="btn sm alt" data-dl="csv">Download feed.csv</button><button class="btn sm alt" data-dl="tsv">Download feed.tsv</button><button class="btn sm alt" id="imgZip">Download product images (PNG, ZIP)</button></div>
+    <p class="small" id="imgMsg" role="status"></p>
+    <div class="note info small"><b>Why files, not a live endpoint?</b> GitHub Pages only serves static files, so the feed is generated here in your browser from the same product database as the store. Commit <code>feed.xml</code> to the root of your repo and Merchant Center can fetch it on a schedule from <code>${esc(baseUrl())}feed.xml</code>. Re-export and commit whenever products, prices or stock change.</div>
+    <details><summary class="small" style="cursor:pointer;font-weight:700">Preview first 12 rows</summary><div class="tablewrap" style="margin-top:10px"><table class="data"><thead><tr>${FEED_COLS.map(c => `<th>${c}</th>`).join("")}</tr></thead><tbody>${rows.slice(0, 12).map(r => `<tr>${FEED_COLS.map(c => `<td>${esc(String(r[c]).slice(0, 60))}</td>`).join("")}</tr>`).join("")}</tbody></table></div></details></div>
+
+  <div class="panel"><h2>3. Feed validation report</h2>
+    <label class="chk small" style="margin-bottom:10px"><input type="checkbox" id="inject" ${adminInject ? "checked" : ""}> Practice mode: inject common feed errors into a copy of the feed (doesn't change the real feed)</label>
+    <div class="kpis"><div class="kpi"><span>Errors</span><b style="color:var(--err)">${cnt("error")}</b></div><div class="kpi"><span>Warnings</span><b style="color:var(--warn)">${cnt("warning")}</b></div><div class="kpi"><span>Info</span><b>${cnt("info")}</b></div></div>
+    <p class="small muted">This is a local pre-check that mirrors common Merchant Center diagnostics. It does <b>not</b> mean Google has approved anything – Google runs its own policy, landing-page and image checks after you submit.</p>
+    <div class="btnrow"><button class="btn sm alt" id="dlReport">Download report (CSV)</button></div>
+    <div class="tablewrap"><table class="data"><thead><tr><th>Severity</th><th>Item / scope</th><th>Issue</th><th>How to fix</th></tr></thead><tbody>
+    ${["error", "warning", "info"].flatMap(s => issues.filter(i => i.sev === s)).slice(0, 400).map(i => `<tr><td><span class="pill ${i.sev[0]}">${i.sev}</span></td><td>${esc(i.item)}</td><td style="white-space:normal;min-width:260px">${esc(i.msg)}</td><td style="white-space:normal;min-width:260px">${esc(i.fix)}</td></tr>`).join("")}</tbody></table></div></div>
+
+  <div class="panel"><h2>4. Before products can serve in Shopping ads</h2>
+    <ol class="steps small"><li><b>Real business &amp; products:</b> Merchant Center requires genuine, purchasable products, a working checkout with payment, and real contact details. NorthStep is fictional, so expect the account to be flagged (e.g. misrepresentation) if you submit it. <b>Never spend real ad budget promoting products that don't exist.</b></li>
+      <li><b>Website verification &amp; claim:</b> verify the site URL in Merchant Center (HTML meta tag in &lt;head&gt; – see comment at top of index.html).</li>
+      <li><b>Shipping &amp; returns:</b> configure in Merchant Center to match the delivery and returns pages.</li>
+      <li><b>Business information:</b> address, phone and customer service details.</li>
+      <li><b>Policy review:</b> Google reviews landing pages, images and claims; items can be disapproved after submission.</li>
+      <li><b>Link Google Ads</b> and import conversions before launching campaigns.</li></ol></div>
+
+  <div class="panel"><h2>5. Inventory &amp; test orders</h2>
+    <p class="small">Simulated orders reduce stock in this browser, and the feed's availability updates to match – a local demonstration of inventory sync. ${orders.length} test order(s) stored.</p>
+    <div class="btnrow"><button class="btn sm alt" id="resetStock">Reset demo stock</button><button class="btn sm alt" id="clearOrders">Clear test orders &amp; purchase-dedupe log</button><a class="btn sm alt" href="?page=account">View test orders</a></div></div>
+
+  <div class="panel"><h2>6. Analytics event log (this session)</h2>
+    <p class="small muted">Every e-commerce event pushed to <code>window.dataLayer</code> since this page loaded. Use alongside GTM Preview and GA4 DebugView. Seeing events here does <b>not</b> prove GA4 received them – only DebugView/Realtime confirm that.</p>
+    <div class="btnrow"><button class="btn sm alt" id="copyLog">Copy log</button></div>
+    <pre class="log" id="log">${esc(EVENT_LOG.map(e => `[${e.time}] ${e.event}\n${JSON.stringify(e.payload, null, 2)}`).join("\n\n") || "No events yet – browse the store, then come back.")}</pre></div></div>`;
+  app.querySelectorAll("[data-dl]").forEach(b => b.onclick = () => {
+    const k = b.dataset.dl, r = buildFeed();
+    if (k === "xml") download("feed.xml", feedXML(r), "application/xml");
+    if (k === "csv") download("feed.csv", feedCSV(r, ","), "text/csv");
+    if (k === "tsv") download("feed.tsv", feedCSV(r, "\t"), "text/tab-separated-values");
+  });
+  $("#saveBase").onclick = () => { let v = $("#baseUrl").value.trim(); if (!/^https?:\/\//.test(v)) { toast("Enter a full URL starting with https://"); return; } if (!v.endsWith("/")) v += "/"; store.set("ns_base_url", v); toast("Site URL saved"); renderAdmin(); };
+  $("#detectBase").onclick = () => { $("#baseUrl").value = location.origin + location.pathname.replace(/index\.html$/, ""); };
+  $("#inject").onchange = e => { adminInject = e.target.checked; renderAdmin(); };
+  $("#dlReport").onclick = () => download("feed-validation-report.csv", ["severity,item,issue,fix", ...issues.map(i => [i.sev, i.item, i.msg, i.fix].map(csvCell).join(","))].join("\n"), "text/csv");
+  $("#resetStock").onclick = () => { store.del("ns_sold"); toast("Demo stock reset"); renderAdmin(); };
+  $("#clearOrders").onclick = () => { store.del("ns_orders"); store.del("ns_tx_tracked"); toast("Test orders cleared"); renderAdmin(); };
+  $("#copyLog").onclick = () => { navigator.clipboard?.writeText($("#log").textContent).then(() => toast("Log copied"), () => toast("Copy not available")); };
+  $("#imgZip").onclick = async () => {
+    const m = $("#imgMsg"); m.textContent = "Rendering images…";
+    try {
+      if (!window.JSZip) await loadScript("https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js");
+      const zip = new JSZip(), dir = zip.folder("images");
+      for (const [i, p] of PRODUCTS.entries()) {
+        m.textContent = `Rendering ${i + 1}/${PRODUCTS.length}: ${p.id}`;
+        dir.file(`${p.id}.png`, await svgToPng(shoeSVG(p, 0, { label: false })));
+        dir.file(`${p.id}-2.png`, await svgToPng(shoeSVG(p, 1, { label: false })));
+      }
+      const blob = await zip.generateAsync({ type: "blob" }); const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "northstep-images.zip"; a.click();
+      m.textContent = `Done – ${PRODUCTS.length * 2} PNG files (1200×1200). Unzip and commit the images/ folder to your repo.`;
+    } catch (err) { m.textContent = "Image export failed: " + err.message; }
+  };
+}
+
+/* ---------- Demo product performance dashboard (SIMULATED DATA) ---------- */
+function seeded(str) { let h = 2166136261; for (const c of str) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return () => { h ^= h << 13; h ^= h >>> 17; h ^= h << 5; return ((h >>> 0) % 100000) / 100000; }; }
+function simData() {
+  return PRODUCTS.map(p => {
+    const r = seeded(p.id + "v1"), oos = totalStock(p) === 0;
+    const impressions = Math.round((oos ? 600 : 4000 + p.pop * 260) * (0.7 + r() * 0.6));
+    const ctr = (0.006 + r() * 0.014) * (p.sale ? 1.25 : 1);
+    const clicks = Math.round(impressions * ctr);
+    const cpc = round2((p.cat === "running" ? 0.42 : p.cat === "boots" ? 0.48 : 0.33) * (0.75 + r() * 0.6));
+    let cvr = (0.012 + r() * 0.03) * (p.sale ? 1.2 : 1); if (oos) cvr = 0; if (p.id === "NS-HARB-M-STN") cvr = 0;
+    const purchases = Math.round(clicks * cvr);
+    const aov = unitPrice(p) * (1 + r() * 0.12);
+    const revenue = round2(purchases * aov), spend = round2(clicks * cpc);
+    const units = Math.round(purchases * (1 + r() * 0.12));
+    const cogs = round2(units * p.cost), net = round2(revenue / (1 + CONFIG.vatRate));
+    const profit = round2(net - cogs - spend);
+    const beRoas = round2(unitPrice(p) / (unitPrice(p) / 1.2 - p.cost));
+    return { p, impressions, clicks, ctr: clicks / impressions, cpc: clicks ? spend / clicks : 0, spend, purchases, cvr: clicks ? purchases / clicks : 0, revenue, roas: spend ? revenue / spend : 0, cpa: purchases ? spend / purchases : null, profit, beRoas };
+  });
+}
+let dashSort = { k: "spend", dir: -1 }, dashCat = "all";
+function renderDashboard() {
+  setMeta("Product performance dashboard", "", "?page=dashboard");
+  const all = simData(), data = all.filter(d => dashCat === "all" || d.p.cat === dashCat);
+  const sum = k => data.reduce((a, d) => a + d[k], 0);
+  const T = { impressions: sum("impressions"), clicks: sum("clicks"), spend: sum("spend"), purchases: sum("purchases"), revenue: sum("revenue"), profit: sum("profit") };
+  const fmtPct = v => (v * 100).toFixed(2) + "%", n = v => v.toLocaleString("en-GB");
+  const sorted = [...data].sort((a, b) => { const k = dashSort.k; const va = k === "title" ? a.p.title : (a[k] ?? -1), vb = k === "title" ? b.p.title : (b[k] ?? -1); return (va > vb ? 1 : va < vb ? -1 : 0) * dashSort.dir; });
+  const cols = [["title", "Product"], ["impressions", "Impr."], ["clicks", "Clicks"], ["ctr", "CTR"], ["cpc", "Avg. CPC"], ["spend", "Cost"], ["purchases", "Purchases"], ["cvr", "Conv. rate"], ["revenue", "Conv. value"], ["roas", "ROAS"], ["cpa", "CPA"], ["beRoas", "Break-even ROAS"], ["profit", "Est. profit"]];
+  const cats = {}; data.forEach(d => { const c = cats[d.p.cat] ||= { spend: 0, revenue: 0 }; c.spend += d.spend; c.revenue += d.revenue; });
+  const maxCat = Math.max(...Object.values(cats).map(c => Math.max(c.spend, c.revenue)), 1);
+  const wasted = data.filter(d => d.spend > 15 && d.purchases === 0);
+  const belowBE = data.filter(d => d.purchases > 0 && d.roas < d.beRoas);
+  const stars = [...data].filter(d => d.purchases >= 3).sort((a, b) => b.roas - a.roas).slice(0, 3);
+  app.innerHTML = `<div class="wrap" style="padding-bottom:40px">${crumbs([["Home", "./"], ["Admin", "?page=admin"], ["Dashboard", ""]])}
+  <h1>Product performance dashboard</h1>
+  <div class="simbanner"><b>SIMULATED DATA</b> – fictional numbers generated in the browser for practice. These are <u>not</u> Google Ads results and are not connected to any ad account. Product IDs, prices and costs come from the real store database.</div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:end"><div><label for="dcat" class="small">Category</label><select id="dcat" style="width:auto"><option value="all">All categories</option>${Object.entries(CATS).map(([k, v]) => `<option value="${k}" ${dashCat === k ? "selected" : ""}>${esc(v)}</option>`).join("")}</select></div>
+    <span class="small muted">Scenario: “Last 30 days”, Shopping/PMax, product-level · ROAS = conv. value ÷ cost · Est. profit = revenue ex VAT − product cost − ad cost</span></div>
+  <div class="kpis"><div class="kpi"><span>Cost</span><b>${money(T.spend)}</b></div><div class="kpi"><span>Conv. value</span><b>${money(T.revenue)}</b></div><div class="kpi"><span>ROAS</span><b>${(T.revenue / T.spend).toFixed(2)}</b></div><div class="kpi"><span>Purchases</span><b>${n(T.purchases)}</b></div><div class="kpi"><span>CPA</span><b>${money(T.spend / Math.max(1, T.purchases))}</b></div><div class="kpi"><span>CTR</span><b>${fmtPct(T.clicks / T.impressions)}</b></div><div class="kpi"><span>Conv. rate</span><b>${fmtPct(T.purchases / Math.max(1, T.clicks))}</b></div><div class="kpi"><span>Est. profit</span><b style="color:${T.profit >= 0 ? "var(--ok)" : "var(--err)"}">${money(T.profit)}</b></div></div>
+  <div class="panel"><h2>Spend vs conversion value by category</h2><div class="bars">${Object.entries(cats).map(([k, c]) => `
+    <div class="b"><span>${esc(CATS[k])}</span><div class="track"><div class="fill" style="width:${c.revenue / maxCat * 100}%;background:#2456f5"></div></div><span class="num">${money(c.revenue)}</span></div>
+    <div class="b"><span class="muted xs">cost</span><div class="track"><div class="fill" style="width:${c.spend / maxCat * 100}%;background:#9aa0ab"></div></div><span class="num muted">${money(c.spend)}</span></div>`).join("")}</div>
+    <p class="xs muted"><span style="color:#2456f5">■</span> Conversion value &nbsp; <span style="color:#9aa0ab">■</span> Cost</p></div>
+  <div class="panel"><h2>Insights to practise on</h2><ul class="small">
+    <li><b>Top performers (ROAS):</b> ${stars.map(d => `${esc(d.p.name)} – ${esc(d.p.colour)} (${d.roas.toFixed(2)})`).join("; ") || "–"}. Consider a separate campaign / lower tROAS to scale.</li>
+    <li><b>Spend with no sales:</b> ${wasted.map(d => `${esc(d.p.id)} (${money(d.spend)})`).join("; ") || "none"}. Check feed title, price, stock and landing page before excluding.</li>
+    <li><b>Below break-even ROAS:</b> ${belowBE.map(d => `${esc(d.p.id)} (${d.roas.toFixed(2)} vs ${d.beRoas.toFixed(2)})`).join("; ") || "none"}. Raise targets or segment with custom_label_0 (margin).</li></ul></div>
+  <div class="btnrow"><button class="btn sm alt" id="dashCsv">Export table (CSV)</button></div>
+  <div class="tablewrap" style="max-height:none"><table class="data"><thead><tr>${cols.map(([k, l]) => `<th class="sortable ${k === "title" ? "" : "num"}" data-k="${k}" aria-sort="${dashSort.k === k ? (dashSort.dir > 0 ? "ascending" : "descending") : "none"}" tabindex="0">${l}${dashSort.k === k ? (dashSort.dir > 0 ? " ▲" : " ▼") : ""}</th>`).join("")}</tr></thead><tbody>
+  ${sorted.map(d => `<tr><td><div style="font-weight:600">${esc(d.p.name)} – ${esc(d.p.colour)}</div><div class="xs muted">${d.p.id}</div></td><td class="num">${n(d.impressions)}</td><td class="num">${n(d.clicks)}</td><td class="num">${fmtPct(d.ctr)}</td><td class="num">${money(d.cpc)}</td><td class="num">${money(d.spend)}</td><td class="num">${d.purchases}</td><td class="num">${fmtPct(d.cvr)}</td><td class="num">${money(d.revenue)}</td><td class="num" style="color:${d.roas >= d.beRoas ? "var(--ok)" : "var(--err)"};font-weight:700">${d.roas.toFixed(2)}</td><td class="num">${d.cpa == null ? "–" : money(d.cpa)}</td><td class="num">${d.beRoas.toFixed(2)}</td><td class="num" style="color:${d.profit >= 0 ? "var(--ok)" : "var(--err)"}">${money(d.profit)}</td></tr>`).join("")}</tbody>
+  <tfoot><tr><td>Total (${data.length} products)</td><td class="num">${n(T.impressions)}</td><td class="num">${n(T.clicks)}</td><td class="num">${fmtPct(T.clicks / T.impressions)}</td><td class="num">${money(T.spend / T.clicks)}</td><td class="num">${money(T.spend)}</td><td class="num">${T.purchases}</td><td class="num">${fmtPct(T.purchases / T.clicks)}</td><td class="num">${money(T.revenue)}</td><td class="num">${(T.revenue / T.spend).toFixed(2)}</td><td class="num">${money(T.spend / Math.max(1, T.purchases))}</td><td></td><td class="num">${money(T.profit)}</td></tr></tfoot></table></div>
+  <p class="xs muted" style="margin-top:10px">Break-even ROAS = price ÷ (price ex VAT − product cost). Green ROAS = above break-even.</p></div>`;
+  $("#dcat").onchange = e => { dashCat = e.target.value; renderDashboard(); };
+  $$("th.sortable").forEach(th => { const fn = () => { const k = th.dataset.k; dashSort = { k, dir: dashSort.k === k ? -dashSort.dir : (k === "title" ? 1 : -1) }; renderDashboard(); }; th.onclick = fn; th.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } }; });
+  $("#dashCsv").onclick = () => download("simulated-product-performance.csv", ["note,SIMULATED DATA – not real Google Ads results", "product_id,title,impressions,clicks,ctr,avg_cpc,cost,purchases,conv_rate,conv_value,roas,cpa,break_even_roas,est_profit",
+    ...sorted.map(d => [d.p.id, d.p.title, d.impressions, d.clicks, d.ctr.toFixed(4), d.cpc.toFixed(2), d.spend.toFixed(2), d.purchases, d.cvr.toFixed(4), d.revenue.toFixed(2), d.roas.toFixed(2), d.cpa == null ? "" : d.cpa.toFixed(2), d.beRoas, d.profit.toFixed(2)].map(csvCell).join(","))].join("\n"), "text/csv");
+}
+
+/* ---------- In-site learning guide (full version in README.md) ---------- */
+function renderGuide() {
+  setMeta("Google Shopping learning guide", "", "?page=guide");
+  app.innerHTML = `<div class="wrap prose">${crumbs([["Home", "./"], ["Admin", "?page=admin"], ["Learning guide", ""]])}<h1>Google Shopping Ads – learning guide</h1>
+  <div class="note warn"><b>Important:</b> NorthStep is fictional. Use it to practise feeds, tracking and analysis. Don't spend real money advertising products that can't be bought – it breaks Google's policies and wastes budget.</div>
+  <h2>1. Deploy</h2><ol class="steps"><li>Create a GitHub repo (e.g. <code>northstep</code>) and upload <code>index.html</code> and <code>README.md</code>.</li><li>Settings → Pages → Deploy from branch → <code>main</code> / root. Your site: <code>https://USERNAME.github.io/northstep/</code>.</li><li>Set <code>CONFIG.siteUrl</code> to that address (or save it in Admin).</li></ol>
+  <h2>2. Product images &amp; feed</h2><ol class="steps"><li>Admin → <b>Download product images</b> → unzip → commit the <code>images/</code> folder.</li><li>Admin → <b>Download feed.xml</b> → commit to the repo root.</li><li>Check Admin → <b>Feed validation report</b>; fix what you can. Turn on practice mode to learn to diagnose errors.</li></ol>
+  <h2>3. Merchant Center</h2><ol class="steps"><li>Create a Merchant Center account; set business country United Kingdom.</li><li>Add &amp; verify your website (paste the meta tag where the comment at the top of index.html says).</li><li>Products → Add products → <b>Add from file</b> → “Add file from a link” → <code>${esc(baseUrl())}feed.xml</code>, daily fetch, country UK, language English, currency GBP.</li><li>Set shipping (match the Delivery page) and a returns policy.</li><li>Review Diagnostics / Needs attention. Expect policy issues for a demo store.</li></ol>
+  <h2>4. Tracking (GTM + GA4)</h2><ol class="steps"><li>Create GA4 property (UK, GBP) and a GTM web container; add both IDs to <code>CONFIG</code>.</li><li>In GTM: Google tag (G-ID) on all pages; GA4 Event tag with event name <code>{{Event}}</code>, “Send e-commerce data” = dataLayer, trigger: custom event matching <code>view_item_list|select_item|view_item|add_to_cart|remove_from_cart|view_cart|begin_checkout|add_shipping_info|add_payment_info|purchase</code>.</li><li>Use GTM <b>Preview</b> + GA4 <b>DebugView</b> and place a test order. Compare purchase value with the order total.</li><li>Test orders carry <code>test_order: true</code> and IDs starting <code>TEST-</code> – exclude them from Google Ads conversions with a trigger condition.</li></ol>
+  <h2>5. Practise campaigns</h2><ul><li>Standard Shopping: product groups by <code>custom_label_1</code> (category); bids by margin (<code>custom_label_0</code>).</li><li>Performance Max: asset groups per category, listing groups filtered by custom labels, tROAS set from break-even.</li><li>Use the <a href="?page=dashboard">dashboard</a> to practise: spot wasted spend, below-break-even products and scale candidates.</li></ul>
+  <p>See <b>README.md</b> for the complete step-by-step guide and exercises.</p></div>`;
+}
+
+/* =============================================================================
+   11. BOOT — header, consent banner, announcement
+============================================================================= */
+function openCookie(manage = false) {
+  const c = store.get("ns_consent", { analytics: false, ads: false });
+  $("#cAnalytics").checked = !!c.analytics; $("#cAds").checked = !!c.ads;
+  $("#cookiePrefs").classList.toggle("show", manage); $("#cManage").textContent = manage ? "Save choices" : "Manage";
+  $("#cookie").classList.add("show");
+}
+function saveConsent(c) { store.set("ns_consent", c); applyConsent(c); $("#cookie").classList.remove("show"); toast("Cookie preferences saved"); }
+$("#cAccept").onclick = () => saveConsent({ analytics: true, ads: true });
+$("#cReject").onclick = () => saveConsent({ analytics: false, ads: false });
+$("#cManage").onclick = () => { if ($("#cookiePrefs").classList.contains("show")) saveConsent({ analytics: $("#cAnalytics").checked, ads: $("#cAds").checked }); else openCookie(true); };
+$("#cookieSettings").onclick = () => openCookie(true);
+if (!store.get("ns_consent", null)) openCookie(false);
+
+$("#menuToggle").onclick = e => { const n = $("#mainNav"), o = n.classList.toggle("open"); e.currentTarget.setAttribute("aria-expanded", o); };
+$("#searchForm").addEventListener("submit", e => { e.preventDefault(); const v = $("#q").value.trim(); if (v) go(`?page=shop&q=${encodeURIComponent(v)}`); });
+const mq = matchMedia("(max-width:560px)"); const syncSearch = () => { $("#searchToggle").style.display = mq.matches ? "inline-grid" : "none"; }; mq.addEventListener?.("change", syncSearch); syncSearch();
+$("#searchToggle").onclick = () => { $("#searchForm").classList.toggle("show"); $("#q").focus(); };
+$("#announce").innerHTML = `Free Standard UK delivery on orders over ${money(CONFIG.freeDeliveryThreshold)} · ${CONFIG.returnsDays}-day returns${CONFIG.testMode ? ` · <b>Demo store – test orders only</b>` : ""}`;
+$("#footContact").innerHTML = `Customer service: ${esc(CONFIG.contact.email)}<br>${esc(CONFIG.contact.hours)}`;
+$("#yr").textContent = new Date().getFullYear();
+updateCartBadge();
+render();
+window.addEventListener("storage", e => { if (e.key === "ns_cart") updateCartBadge(); });
+</script>
+</body>
+</html>
